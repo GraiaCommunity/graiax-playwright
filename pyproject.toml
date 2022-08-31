@@ -1,0 +1,44 @@
+[project]
+name = "graiax-playwright"
+version = "0.1.0"
+description = "适用于 Graia 的 Playwright 管理器"
+authors = [
+    {name = "Redlnn", email = "w731347477@gmail.com"},
+]
+dependencies = [
+    "loguru>=0.6.0",
+    "playwright>=1.25.2",
+    "launart>=0.6.1",
+]
+keywords = ["graia", "launart", "playwright"]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.urls]
+repository = "https://github.com/Redlnn/graiax-playwright"
+
+[project.optional-dependencies]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "flake8>=5.0.4",
+    "black>=22.6.0",
+    "isort>=5.10.1",
+]
+
+[tool.pdm.build]
+includes = ["src/graiax"]
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"

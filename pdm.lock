@@ -1,0 +1,368 @@
+[[package]]
+name = "black"
+version = "22.6.0"
+requires_python = ">=3.6.2"
+summary = "The uncompromising code formatter."
+dependencies = [
+    "click>=8.0.0",
+    "mypy-extensions>=0.4.3",
+    "pathspec>=0.9.0",
+    "platformdirs>=2",
+    "tomli>=1.1.0; python_full_version < \"3.11.0a7\"",
+    "typing-extensions>=3.10.0.0; python_version < \"3.10\"",
+]
+
+[[package]]
+name = "click"
+version = "8.1.3"
+requires_python = ">=3.7"
+summary = "Composable command line interface toolkit"
+dependencies = [
+    "colorama; platform_system == \"Windows\"",
+]
+
+[[package]]
+name = "colorama"
+version = "0.4.5"
+requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+summary = "Cross-platform colored terminal text."
+
+[[package]]
+name = "flake8"
+version = "5.0.4"
+requires_python = ">=3.6.1"
+summary = "the modular source code checker: pep8 pyflakes and co"
+dependencies = [
+    "mccabe<0.8.0,>=0.7.0",
+    "pycodestyle<2.10.0,>=2.9.0",
+    "pyflakes<2.6.0,>=2.5.0",
+]
+
+[[package]]
+name = "greenlet"
+version = "1.1.2"
+requires_python = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+summary = "Lightweight in-process concurrent programming"
+
+[[package]]
+name = "isort"
+version = "5.10.1"
+requires_python = ">=3.6.1,<4.0"
+summary = "A Python utility / library to sort Python imports."
+
+[[package]]
+name = "launart"
+version = "0.6.1"
+requires_python = ">=3.8"
+summary = "Component lifetime manager for runtime."
+dependencies = [
+    "loguru>=0.6.0",
+    "statv>=0.2.2",
+]
+
+[[package]]
+name = "loguru"
+version = "0.6.0"
+requires_python = ">=3.5"
+summary = "Python logging made (stupidly) simple"
+dependencies = [
+    "colorama>=0.3.4; sys_platform == \"win32\"",
+    "win32-setctime>=1.0.0; sys_platform == \"win32\"",
+]
+
+[[package]]
+name = "mccabe"
+version = "0.7.0"
+requires_python = ">=3.6"
+summary = "McCabe checker, plugin for flake8"
+
+[[package]]
+name = "mypy-extensions"
+version = "0.4.3"
+summary = "Experimental type system extensions for programs checked with the mypy typechecker."
+
+[[package]]
+name = "pathspec"
+version = "0.10.0"
+requires_python = ">=3.7"
+summary = "Utility library for gitignore style pattern matching of file paths."
+
+[[package]]
+name = "platformdirs"
+version = "2.5.2"
+requires_python = ">=3.7"
+summary = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+
+[[package]]
+name = "playwright"
+version = "1.25.2"
+requires_python = ">=3.7"
+summary = "A high-level API to automate web browsers"
+dependencies = [
+    "greenlet==1.1.2",
+    "pyee==8.1.0",
+    "typing-extensions; python_version <= \"3.8\"",
+    "websockets==10.1",
+]
+
+[[package]]
+name = "pycodestyle"
+version = "2.9.1"
+requires_python = ">=3.6"
+summary = "Python style guide checker"
+
+[[package]]
+name = "pyee"
+version = "8.1.0"
+summary = "A port of node.js's EventEmitter to python."
+
+[[package]]
+name = "pyflakes"
+version = "2.5.0"
+requires_python = ">=3.6"
+summary = "passive checker of Python programs"
+
+[[package]]
+name = "statv"
+version = "0.3.2"
+requires_python = ">=3.8"
+summary = "a uniform status implementation for graia project"
+
+[[package]]
+name = "tomli"
+version = "2.0.1"
+requires_python = ">=3.7"
+summary = "A lil' TOML parser"
+
+[[package]]
+name = "typing-extensions"
+version = "4.3.0"
+requires_python = ">=3.7"
+summary = "Backported and Experimental Type Hints for Python 3.7+"
+
+[[package]]
+name = "websockets"
+version = "10.1"
+requires_python = ">=3.7"
+summary = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+
+[[package]]
+name = "win32-setctime"
+version = "1.1.0"
+requires_python = ">=3.5"
+summary = "A small Python utility to set file creation time on Windows"
+
+[metadata]
+lock_version = "4.0"
+content_hash = "sha256:70e73f2c495dce52ff972c4b3b5d70b06ad956d3fb003226f5c5345229b1cb8e"
+
+[metadata.files]
+"black 22.6.0" = [
+    {url = "https://files.pythonhosted.org/packages/07/eb/a757135497a3be31ab8c00ef239070c7277ad11b618104950a756bcab3c1/black-22.6.0-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:a218d7e5856f91d20f04e931b6f16d15356db1c846ee55f01bac297a705ca24f"},
+    {url = "https://files.pythonhosted.org/packages/19/b0/13864fd5f3090ca5379f3dcf6034f1e4f02b59620e7b8b5c6f0c85622c0b/black-22.6.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:560558527e52ce8afba936fcce93a7411ab40c7d5fe8c2463e279e843c0328ee"},
+    {url = "https://files.pythonhosted.org/packages/1a/84/203163902ee26bcf1beaef582ee0c8df3f325da3e961b68d2ece959e19d3/black-22.6.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:6797f58943fceb1c461fb572edbe828d811e719c24e03375fd25170ada53825e"},
+    {url = "https://files.pythonhosted.org/packages/1d/d2/bc58bae8ec35f5a3c796d71d5bda113060678483e623a019fb889edd8d97/black-22.6.0-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:7ba9be198ecca5031cd78745780d65a3f75a34b2ff9be5837045dce55db83d1c"},
+    {url = "https://files.pythonhosted.org/packages/2b/70/1d0e33a4df4ed73e9f02f698a29b5d94ff58e39f029c939ecf96a10fb1f3/black-22.6.0-py3-none-any.whl", hash = "sha256:ac609cf8ef5e7115ddd07d85d988d074ed00e10fbc3445aee393e70164a2219c"},
+    {url = "https://files.pythonhosted.org/packages/2b/d9/7331e50dad8d5149a9e2285766960ac6b732ae9b3b9796e10916ad88ff61/black-22.6.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b154e6bbde1e79ea3260c4b40c0b7b3109ffcdf7bc4ebf8859169a6af72cd70b"},
+    {url = "https://files.pythonhosted.org/packages/3e/fd/5e47b4d77549909e484de906a69fccc3fcfb782131d8b449073ad8b3ed3e/black-22.6.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:568ac3c465b1c8b34b61cd7a4e349e93f91abf0f9371eda1cf87194663ab684e"},
+    {url = "https://files.pythonhosted.org/packages/40/d1/3f366d7887d1fb6e3e487a6c975a9e9e13618757ed0d5427197fa9e28290/black-22.6.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:187d96c5e713f441a5829e77120c269b6514418f4513a390b0499b0987f2ff1c"},
+    {url = "https://files.pythonhosted.org/packages/46/eb/f489451de8b3e91bd82ee722b9a8493b94f8719ea6649e5b8bba2376056d/black-22.6.0-cp37-cp37m-win_amd64.whl", hash = "sha256:074458dc2f6e0d3dab7928d4417bb6957bb834434516f21514138437accdbe90"},
+    {url = "https://files.pythonhosted.org/packages/55/33/752544332a2d3be0f6d54ef808075681b68ddc15cfcb90ff128f2d30c85c/black-22.6.0-cp39-cp39-win_amd64.whl", hash = "sha256:4af5bc0e1f96be5ae9bd7aaec219c901a94d6caa2484c21983d043371c733fc4"},
+    {url = "https://files.pythonhosted.org/packages/57/62/2961a0a57bdf768ccb5aea16327400be6e6bde4fb47ac05af7e9535c5289/black-22.6.0-cp36-cp36m-win_amd64.whl", hash = "sha256:2ea29072e954a4d55a2ff58971b83365eba5d3d357352a07a7a4df0d95f51c78"},
+    {url = "https://files.pythonhosted.org/packages/61/11/551b0d067a7e6836fc0997ab36ee46ec65259fea8f30104f4870092f3301/black-22.6.0.tar.gz", hash = "sha256:6c6d39e28aed379aec40da1c65434c77d75e65bb59a1e1c283de545fb4e7c6c9"},
+    {url = "https://files.pythonhosted.org/packages/63/96/814e02033701f51701444d5505b5e2594453b1f7e913764a097b1f701633/black-22.6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:b270a168d69edb8b7ed32c193ef10fd27844e5c60852039599f9184460ce0807"},
+    {url = "https://files.pythonhosted.org/packages/80/ff/cfcfa4cdb42d8fff75b6b4dc355a1186a95de4714df8cc2a60f69f7b17f8/black-22.6.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:f586c26118bc6e714ec58c09df0157fe2d9ee195c764f630eb0d8e7ccce72e69"},
+    {url = "https://files.pythonhosted.org/packages/86/9c/2a8a13993bc63a50bda7436ecba902231fd9a88dd1cd233e6e3f534e071c/black-22.6.0-cp310-cp310-win_amd64.whl", hash = "sha256:f6fe02afde060bbeef044af7996f335fbe90b039ccf3f5eb8f16df8b20f77666"},
+    {url = "https://files.pythonhosted.org/packages/8a/90/69274ed80397ada663ce3c4cc0c70b7fb20b529f9baf4bf9ddf4edc14ccd/black-22.6.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:cfaf3895a9634e882bf9d2363fed5af8888802d670f58b279b0bece00e9a872d"},
+    {url = "https://files.pythonhosted.org/packages/9b/22/ff6d904dcb6f92bd7c20b178ed0aa9e6814ae6452df6c573806dbc465b85/black-22.6.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:a3db5b6409b96d9bd543323b23ef32a1a2b06416d525d27e0f67e74f1446c8f2"},
+    {url = "https://files.pythonhosted.org/packages/a7/51/d0acd9f74a946a825a148dcc392433c2332ae405967d76292b9e64712dc8/black-22.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c85928b9d5f83b23cee7d0efcb310172412fbf7cb9d9ce963bd67fd141781def"},
+    {url = "https://files.pythonhosted.org/packages/ac/9d/b06f45e8dff2b10bf4644ba7a74490538c0272ae48308e04c6f551671b89/black-22.6.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:e439798f819d49ba1c0bd9664427a05aab79bfba777a6db94fd4e56fae0cb849"},
+    {url = "https://files.pythonhosted.org/packages/c4/67/a4e9125bf1a4eb5a2624b3b979af2dc6ee8d3c4ee0b3d2867173db4916fa/black-22.6.0-cp38-cp38-win_amd64.whl", hash = "sha256:b9fd45787ba8aa3f5e0a0a98920c1012c884622c6c920dbe98dbd05bc7c70fbf"},
+    {url = "https://files.pythonhosted.org/packages/d6/45/985c13ac6b2f67504cda61fc1d95365eb6446a4c6988ffe0f0f311f7a617/black-22.6.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:94783f636bca89f11eb5d50437e8e17fbc6a929a628d82304c80fa9cd945f256"},
+    {url = "https://files.pythonhosted.org/packages/e7/fe/4533d110ddced851a359cbbb162685814719690ee01939a34be023410854/black-22.6.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:6c1734ab264b8f7929cef8ae5f900b85d579e6cbfde09d7387da8f04771b51c6"},
+    {url = "https://files.pythonhosted.org/packages/fc/37/032c45b55f901ee3fe780fbc17fe2dc262c809d94de1288201350d8d680b/black-22.6.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c9a3ac16efe9ec7d7381ddebcc022119794872abce99475345c5a61aa18c45ad"},
+]
+"click 8.1.3" = [
+    {url = "https://files.pythonhosted.org/packages/59/87/84326af34517fca8c58418d148f2403df25303e02736832403587318e9e8/click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
+    {url = "https://files.pythonhosted.org/packages/c2/f1/df59e28c642d583f7dacffb1e0965d0e00b218e0186d7858ac5233dce840/click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
+]
+"colorama 0.4.5" = [
+    {url = "https://files.pythonhosted.org/packages/2b/65/24d033a9325ce42ccbfa3ca2d0866c7e89cc68e5b9d92ecaba9feef631df/colorama-0.4.5.tar.gz", hash = "sha256:e6c6b4334fc50988a639d9b98aa429a0b57da6e17b9a44f0451f930b6967b7a4"},
+    {url = "https://files.pythonhosted.org/packages/77/8b/7550e87b2d308a1b711725dfaddc19c695f8c5fa413c640b2be01662f4e6/colorama-0.4.5-py2.py3-none-any.whl", hash = "sha256:854bf444933e37f5824ae7bfc1e98d5bce2ebe4160d46b5edf346a89358e99da"},
+]
+"flake8 5.0.4" = [
+    {url = "https://files.pythonhosted.org/packages/ad/00/9808c62b2d529cefc69ce4e4a1ea42c0f855effa55817b7327ec5b75e60a/flake8-5.0.4.tar.gz", hash = "sha256:6fbe320aad8d6b95cec8b8e47bc933004678dc63095be98528b7bdd2a9f510db"},
+    {url = "https://files.pythonhosted.org/packages/cf/a0/b881b63a17a59d9d07f5c0cc91a29182c8e8a9aa2bde5b3b2b16519c02f4/flake8-5.0.4-py2.py3-none-any.whl", hash = "sha256:7a1cf6b73744f5806ab95e526f6f0d8c01c66d7bbe349562d22dfca20610b248"},
+]
+"greenlet 1.1.2" = [
+    {url = "https://files.pythonhosted.org/packages/07/59/f4656193ac084b7134dcf5f5d4d5c4d3a154d222202eecf00b367d367e90/greenlet-1.1.2-cp310-cp310-win_amd64.whl", hash = "sha256:14d4f3cd4e8b524ae9b8aa567858beed70c392fdec26dbdb0a8a418392e71708"},
+    {url = "https://files.pythonhosted.org/packages/07/97/6f07d888c4fce65ec4fb2177e75d45e604789eb075a09946dd7e7f88e790/greenlet-1.1.2-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:f3acda1924472472ddd60c29e5b9db0cec629fbe3c5c5accb74d6d6d14773478"},
+    {url = "https://files.pythonhosted.org/packages/08/c6/0bd71c28d7f318ce4a73c6d8d26130233863070f418e5c340ffb7fa609da/greenlet-1.1.2-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:572e1787d1460da79590bf44304abbc0a2da944ea64ec549188fa84d89bba7ab"},
+    {url = "https://files.pythonhosted.org/packages/0c/10/754e21b5bea89d0e73f99d60c83754df7cc64db74f47d98ab187669ce341/greenlet-1.1.2.tar.gz", hash = "sha256:e30f5ea4ae2346e62cedde8794a56858a67b878dd79f7df76a0767e356b1744a"},
+    {url = "https://files.pythonhosted.org/packages/1e/08/63a6757e95589b293d753637a63e951587f9e2cd16e331eaff3c1c47e445/greenlet-1.1.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:9f3cba480d3deb69f6ee2c1825060177a22c7826431458c697df88e6aeb3caee"},
+    {url = "https://files.pythonhosted.org/packages/2f/5a/28d7f5d3afddf2669f68f9779b71946a6903c89af1dcfd750a14ce3b55c7/greenlet-1.1.2-cp39-cp39-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:7227b47e73dedaa513cdebb98469705ef0d66eb5a1250144468e9c3097d6b59b"},
+    {url = "https://files.pythonhosted.org/packages/30/1c/5f4df8816093dbfc8ded8b53ab672223deeb39e9dec6a48aaf278c52df99/greenlet-1.1.2-cp38-cp38-win32.whl", hash = "sha256:288c6a76705dc54fba69fbcb59904ae4ad768b4c768839b8ca5fdadec6dd8cfd"},
+    {url = "https://files.pythonhosted.org/packages/3d/2a/076407f5f68ec0c3063e0e60d37a23fe2d9dd43014c2aa99d19200f2ef66/greenlet-1.1.2-cp35-cp35m-win_amd64.whl", hash = "sha256:903bbd302a2378f984aef528f76d4c9b1748f318fe1294961c072bdc7f2ffa3e"},
+    {url = "https://files.pythonhosted.org/packages/40/10/fea5c3ddfb6230e403a1dd6c7a1d1620d2fe096ac43f9ff4fb6a3057ab9b/greenlet-1.1.2-cp37-cp37m-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:8c790abda465726cfb8bb08bd4ca9a5d0a7bd77c7ac1ca1b839ad823b948ea28"},
+    {url = "https://files.pythonhosted.org/packages/44/19/9a5f20b0e02e300a2d0a5c3743acd23e02491c63e1b68de26158dc07b9ae/greenlet-1.1.2-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1e12bdc622676ce47ae9abbf455c189e442afdde8818d9da983085df6312e7a1"},
+    {url = "https://files.pythonhosted.org/packages/44/5e/b3acc744a11f35d3109fef1217aea849d244a39f814241bb299f5ad41964/greenlet-1.1.2-cp27-cp27m-win32.whl", hash = "sha256:aa5b467f15e78b82257319aebc78dd2915e4c1436c3c0d1ad6f53e47ba6e2713"},
+    {url = "https://files.pythonhosted.org/packages/44/a9/9cffabbae4b85e2ff8622c2f8b2247657885bac1555186f3e34f3e4a2d08/greenlet-1.1.2-cp37-cp37m-win32.whl", hash = "sha256:64e6175c2e53195278d7388c454e0b30997573f3f4bd63697f88d855f7a6a1fc"},
+    {url = "https://files.pythonhosted.org/packages/45/ef/63d2b5d09b07dd45e9f8564f9875e3d57f46e7714896703abe0c9fcc1ec9/greenlet-1.1.2-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:93f81b134a165cc17123626ab8da2e30c0455441d4ab5576eed73a64c025b25c"},
+    {url = "https://files.pythonhosted.org/packages/47/20/433693ac90ae70c8577bf4896951859e8d293e59df5818073033f181ee7b/greenlet-1.1.2-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:8639cadfda96737427330a094476d4c7a56ac03de7265622fcf4cfe57c8ae18d"},
+    {url = "https://files.pythonhosted.org/packages/47/c6/049c29ded17c356b8894458fe21c4e37d5746f6a99b17c07bad1189c2938/greenlet-1.1.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:fdcec0b8399108577ec290f55551d926d9a1fa6cad45882093a7a07ac5ec147b"},
+    {url = "https://files.pythonhosted.org/packages/4d/70/8bc33ca00820dcae9ad0c7cae19088a45faf386e6d467de015655de395ce/greenlet-1.1.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b1692f7d6bc45e3200844be0dba153612103db241691088626a33ff1f24a0d88"},
+    {url = "https://files.pythonhosted.org/packages/4e/33/2eb5b46e3f1f46b24ff09d04ff227520273820f6be9e2176ea5e39063b3f/greenlet-1.1.2-cp38-cp38-win_amd64.whl", hash = "sha256:8d2f1fb53a421b410751887eb4ff21386d119ef9cde3797bf5e7ed49fb51a3b3"},
+    {url = "https://files.pythonhosted.org/packages/4e/39/71870a73ac498c5af423c566bb9ac6c3a3b2147acfa35ed44a9ccc41fab1/greenlet-1.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:abb7a75ed8b968f3061327c433a0fbd17b729947b400747c334a9c29a9af6c58"},
+    {url = "https://files.pythonhosted.org/packages/61/f1/314caccf5e024d43801d9efff6facef52528bdfe2f3f3ef0883ae53c17cb/greenlet-1.1.2-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:0051c6f1f27cb756ffc0ffbac7d2cd48cb0362ac1736871399a739b2885134d3"},
+    {url = "https://files.pythonhosted.org/packages/65/62/eb54724f4a4e606c3e46503b55923dd67696395da8f502c835ff5adbefd8/greenlet-1.1.2-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:fa877ca7f6b48054f847b61d6fa7bed5cebb663ebc55e018fda12db09dcc664c"},
+    {url = "https://files.pythonhosted.org/packages/71/49/55a19e26db17ceb77da6855453282af3a6b56f8936579a851a4b2c9f49db/greenlet-1.1.2-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:7418b6bfc7fe3331541b84bb2141c9baf1ec7132a7ecd9f375912eca810e714e"},
+    {url = "https://files.pythonhosted.org/packages/72/2d/53428626ef5cd9837701cfc49d2a60ecefe8e0737c345b5547b1d88dd739/greenlet-1.1.2-cp38-cp38-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:00e44c8afdbe5467e4f7b5851be223be68adb4272f44696ee71fe46b7036a711"},
+    {url = "https://files.pythonhosted.org/packages/76/5a/a6a693096353c1c17932b21ae864a0280e420fadd2f14399a00b085d3d1b/greenlet-1.1.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:dd0b1e9e891f69e7675ba5c92e28b90eaa045f6ab134ffe70b52e948aa175b3c"},
+    {url = "https://files.pythonhosted.org/packages/87/8a/02881e7abe67c4cd9bae211b12031b53c3edf71ee0ffff170e9a16297610/greenlet-1.1.2-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:95e69877983ea39b7303570fa6760f81a3eec23d0e3ab2021b7144b94d06202d"},
+    {url = "https://files.pythonhosted.org/packages/89/75/73d6dccf264a490eb52a36e24ada058b1f5f0e45cbd0cd4cab5bff587416/greenlet-1.1.2-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:58df5c2a0e293bf665a51f8a100d3e9956febfbf1d9aaf8c0677cf70218910c6"},
+    {url = "https://files.pythonhosted.org/packages/9c/aa/49ab5629df48b08c9e509b98a7b2b9f67c923ae800c8d09d7af31e49ecb7/greenlet-1.1.2-cp39-cp39-win32.whl", hash = "sha256:f70a9e237bb792c7cc7e44c531fd48f5897961701cdaa06cf22fc14965c496cf"},
+    {url = "https://files.pythonhosted.org/packages/9e/dc/0b1aeaa008144d3d503113aa4c5c3c46311b9942f77c1ae337d04fb703dc/greenlet-1.1.2-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:eff9d20417ff9dcb0d25e2defc2574d10b491bf2e693b4e491914738b7908168"},
+    {url = "https://files.pythonhosted.org/packages/a1/b6/949a07551279b770d49efe18e1a732a53a45cf76c5f5981ee6ebd17eab19/greenlet-1.1.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:eb6ea6da4c787111adf40f697b4e58732ee0942b5d3bd8f435277643329ba627"},
+    {url = "https://files.pythonhosted.org/packages/aa/cb/e500854d5bfdfe5fc36e0420845e79f4b52df3c11ca73838f19ebebc1ad2/greenlet-1.1.2-cp36-cp36m-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:21915eb821a6b3d9d8eefdaf57d6c345b970ad722f856cd71739493ce003ad08"},
+    {url = "https://files.pythonhosted.org/packages/aa/e0/d6e21c642a477fc97aa667c64c8100fe4a63dd39e9b2dc3faafcfd03bef0/greenlet-1.1.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f276df9830dba7a333544bd41070e8175762a7ac20350786b322b714b0e654f5"},
+    {url = "https://files.pythonhosted.org/packages/af/55/e60bc4c2bd7cad081a29f2e046f1e28e45e8529025c07ce725a84d235312/greenlet-1.1.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7ff61ff178250f9bb3cd89752df0f1dd0e27316a8bd1465351652b1b4a4cdfd3"},
+    {url = "https://files.pythonhosted.org/packages/b0/37/be7fd0a351a4e52b72857e24115159754a38d11d41bf9861b607330e3934/greenlet-1.1.2-cp36-cp36m-win32.whl", hash = "sha256:32ca72bbc673adbcfecb935bb3fb1b74e663d10a4b241aaa2f5a75fe1d1f90aa"},
+    {url = "https://files.pythonhosted.org/packages/b2/b1/30895f5467c5552bd863b72961b977db95094d3017c39c265cc34f2f7cd8/greenlet-1.1.2-cp27-cp27m-win_amd64.whl", hash = "sha256:40b951f601af999a8bf2ce8c71e8aaa4e8c6f78ff8afae7b808aae2dc50d4c40"},
+    {url = "https://files.pythonhosted.org/packages/b2/c2/141916d37869e817cf18a590de62e8bc732e602ed6d2786c09f4b365f2cf/greenlet-1.1.2-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:b336501a05e13b616ef81ce329c0e09ac5ed8c732d9ba7e3e983fcc1a9e86965"},
+    {url = "https://files.pythonhosted.org/packages/b7/55/0e1a2c02f043b9fc698e70c6ef247b233c82791a78466929352fefcae5e8/greenlet-1.1.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:97e5306482182170ade15c4b0d8386ded995a07d7cc2ca8f27958d34d6736497"},
+    {url = "https://files.pythonhosted.org/packages/b7/6d/c769c05ece064dac69ab8f54a680b8b63374c745f711da54333a9a75f498/greenlet-1.1.2-cp36-cp36m-win_amd64.whl", hash = "sha256:f0214eb2a23b85528310dad848ad2ac58e735612929c8072f6093f3585fd342d"},
+    {url = "https://files.pythonhosted.org/packages/bb/7b/2ac66aa5f9b7e07d62cd6c2c95d44036b609bda80e8739202e3551ee7bf3/greenlet-1.1.2-cp39-cp39-win_amd64.whl", hash = "sha256:013d61294b6cd8fe3242932c1c5e36e5d1db2c8afb58606c5a67efce62c1f5fd"},
+    {url = "https://files.pythonhosted.org/packages/bd/66/143727df72394e768381c3a0e4491edf7c32e786b06f1e4eb5f1753342c7/greenlet-1.1.2-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:aec52725173bd3a7b56fe91bc56eccb26fbdff1386ef123abb63c84c5b43b63a"},
+    {url = "https://files.pythonhosted.org/packages/c5/c8/9f41dabc0542f6d1d9e746bd530666ba44b2609533de22e723dc3c160273/greenlet-1.1.2-cp39-cp39-manylinux2010_x86_64.whl", hash = "sha256:be5f425ff1f5f4b3c1e33ad64ab994eed12fc284a6ea71c5243fd564502ecbe5"},
+    {url = "https://files.pythonhosted.org/packages/cf/cc/1654905f4806009352e60fdfc48cf0573cef8bf519457c6c06ee21d31112/greenlet-1.1.2-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:17ff94e7a83aa8671a25bf5b59326ec26da379ace2ebc4411d690d80a7fbcf23"},
+    {url = "https://files.pythonhosted.org/packages/d0/bf/e6d86812a6d81536afbb4ad0a7a9793fd2d31268a6dabbc9d82534eab5fa/greenlet-1.1.2-cp310-cp310-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:e6a36bb9474218c7a5b27ae476035497a6990e21d04c279884eb10d9b290f1b1"},
+    {url = "https://files.pythonhosted.org/packages/d1/1d/06bf7031a22617197acd5c8427934cc32472bd7887313c82beeaea174d77/greenlet-1.1.2-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:b92e29e58bef6d9cfd340c72b04d74c4b4e9f70c9fa7c78b674d1fec18896dc4"},
+    {url = "https://files.pythonhosted.org/packages/d4/00/7474a1f27efa5c023fe114d84801fe2ded66db2fa5e72253d698b9a95a2a/greenlet-1.1.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ec8c433b3ab0419100bd45b47c9c8551248a5aee30ca5e9d399a0b57ac04651b"},
+    {url = "https://files.pythonhosted.org/packages/d7/6a/3d73858eeea865303319c71115e794cd789453eefe281225548f1f95d96e/greenlet-1.1.2-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:8c5d5b35f789a030ebb95bff352f1d27a93d81069f2adb3182d99882e095cefe"},
+    {url = "https://files.pythonhosted.org/packages/d9/e1/37db23293372c8b077675832b2f6a4ff3168a451c40bd329588825aa02dd/greenlet-1.1.2-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:166eac03e48784a6a6e0e5f041cfebb1ab400b394db188c48b3a84737f505b67"},
+    {url = "https://files.pythonhosted.org/packages/da/87/d99bc105cf88b538efcf7e593083f3b4c15be9a081099f534cb25759b997/greenlet-1.1.2-cp35-cp35m-win32.whl", hash = "sha256:7cbd7574ce8e138bda9df4efc6bf2ab8572c9aff640d8ecfece1b006b68da963"},
+    {url = "https://files.pythonhosted.org/packages/e7/b3/e4f84cd23ea46676dd88c514457ca0bad7a8efe40be76cffc009fed4b16e/greenlet-1.1.2-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:9633b3034d3d901f0a46b7939f8c4d64427dfba6bbc5a36b1a67364cf148a1b0"},
+    {url = "https://files.pythonhosted.org/packages/e8/2e/a8c9772f3adb294f015775547f990aa2d9c3e2dfdcddaa4e5a9d544a6a8c/greenlet-1.1.2-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e859fcb4cbe93504ea18008d1df98dee4f7766db66c435e4882ab35cf70cac43"},
+    {url = "https://files.pythonhosted.org/packages/eb/4d/97e281170a0f88f2bef182f5c76b78b89dd492fce372ea381bca59f76371/greenlet-1.1.2-cp27-cp27m-manylinux2010_x86_64.whl", hash = "sha256:833e1551925ed51e6b44c800e71e77dacd7e49181fdc9ac9a0bf3714d515785d"},
+    {url = "https://files.pythonhosted.org/packages/ed/18/65451a0b924688ca341a71eee561adb1e9371dbd94960cd012854e9d93b8/greenlet-1.1.2-cp27-cp27mu-manylinux2010_x86_64.whl", hash = "sha256:356b3576ad078c89a6107caa9c50cc14e98e3a6c4874a37c3e0273e4baf33de8"},
+    {url = "https://files.pythonhosted.org/packages/ee/1f/521b0c4c7fb010d438881b056785a358e9bde6eecac6d5f10f76021d0918/greenlet-1.1.2-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f9d29ca8a77117315101425ec7ec2a47a22ccf59f5593378fc4077ac5b754fce"},
+    {url = "https://files.pythonhosted.org/packages/f3/78/934cb34e853222566d9449435daad7c1d281136115f991be6db7c9d8004a/greenlet-1.1.2-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:b8c008de9d0daba7b6666aa5bbfdc23dcd78cafc33997c9b7741ff6353bafb7f"},
+    {url = "https://files.pythonhosted.org/packages/f4/4d/52cdc4fb2d9c7a226c490a19373c32a837b38205abd10010c3ade0b011ca/greenlet-1.1.2-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:2bde6792f313f4e918caabc46532aa64aa27a0db05d75b20edfc5c6f46479de2"},
+    {url = "https://files.pythonhosted.org/packages/f5/34/adc2134c9567dd99254f20e6981a9006a5767dfed287eb94f273ec51e092/greenlet-1.1.2-cp37-cp37m-win_amd64.whl", hash = "sha256:b11548073a2213d950c3f671aa88e6f83cda6e2fb97a8b6317b1b5b33d850e06"},
+    {url = "https://files.pythonhosted.org/packages/f7/cc/60cc190f564e9fb2ed443ffa48e4ab114236d17d9419f5a0feba9c06ee07/greenlet-1.1.2-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:049fe7579230e44daef03a259faa24511d10ebfa44f69411d99e6a184fe68073"},
+]
+"isort 5.10.1" = [
+    {url = "https://files.pythonhosted.org/packages/ab/e9/964cb0b2eedd80c92f5172f1f8ae0443781a9d461c1372a3ce5762489593/isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
+    {url = "https://files.pythonhosted.org/packages/b8/5b/f18e227df38b94b4ee30d2502fd531bebac23946a2497e5595067a561274/isort-5.10.1-py3-none-any.whl", hash = "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7"},
+]
+"launart 0.6.1" = [
+    {url = "https://files.pythonhosted.org/packages/14/47/33a21e34b66f36b51a02bb550f039b6278fa84fcf2fb5e53cf1a98218a68/launart-0.6.1.tar.gz", hash = "sha256:630d5582c3f5e7b68df0b2bde46f5bdfef69557fdade2af8414172e4c862dd15"},
+    {url = "https://files.pythonhosted.org/packages/88/87/639dd473934384dff27b95508accab7dd302d63f4eaf1f48822176294e40/launart-0.6.1-py3-none-any.whl", hash = "sha256:515ccadb1aa2c0ff5647bad10bd4dab53913edbe63eb0f550a80bbe723b31658"},
+]
+"loguru 0.6.0" = [
+    {url = "https://files.pythonhosted.org/packages/75/1f/d3818863e4be96bd641c4643c535a98f0fa2a12efa7c8ba35f763fa778ee/loguru-0.6.0.tar.gz", hash = "sha256:066bd06758d0a513e9836fd9c6b5a75bfb3fd36841f4b996bc60b547a309d41c"},
+    {url = "https://files.pythonhosted.org/packages/fe/21/e1d1da2586865a159fc73b611f36bdd50b6c4043cb6132d3d5e972988028/loguru-0.6.0-py3-none-any.whl", hash = "sha256:4e2414d534a2ab57573365b3e6d0234dfb1d84b68b7f3b948e6fb743860a77c3"},
+]
+"mccabe 0.7.0" = [
+    {url = "https://files.pythonhosted.org/packages/27/1a/1f68f9ba0c207934b35b86a8ca3aad8395a3d6dd7921c0686e23853ff5a9/mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
+    {url = "https://files.pythonhosted.org/packages/e7/ff/0ffefdcac38932a54d2b5eed4e0ba8a408f215002cd178ad1df0f2806ff8/mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
+]
+"mypy-extensions 0.4.3" = [
+    {url = "https://files.pythonhosted.org/packages/5c/eb/975c7c080f3223a5cdaff09612f3a5221e4ba534f7039db34c35d95fa6a5/mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
+    {url = "https://files.pythonhosted.org/packages/63/60/0582ce2eaced55f65a4406fc97beba256de4b7a95a0034c6576458c6519f/mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
+]
+"pathspec 0.10.0" = [
+    {url = "https://files.pythonhosted.org/packages/03/45/41884de3da7c1012c729fc6fdad25d6b7906c69f5aaf4b23238ac8acfced/pathspec-0.10.0.tar.gz", hash = "sha256:01eecd304ba0e6eeed188ae5fa568e99ef10265af7fd9ab737d6412b4ee0ab85"},
+    {url = "https://files.pythonhosted.org/packages/3c/52/8559662da5afa79eb439c24d5e4e9752504665c123efbf0c825f8c996ee5/pathspec-0.10.0-py3-none-any.whl", hash = "sha256:aefa80ac32d5bf1f96139dca67cefb69a431beff4e6bf1168468f37d7ab87015"},
+]
+"platformdirs 2.5.2" = [
+    {url = "https://files.pythonhosted.org/packages/ed/22/967181c94c3a4063fe64e15331b4cb366bdd7dfbf46fcb8ad89650026fec/platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
+    {url = "https://files.pythonhosted.org/packages/ff/7b/3613df51e6afbf2306fc2465671c03390229b55e3ef3ab9dd3f846a53be6/platformdirs-2.5.2.tar.gz", hash = "sha256:58c8abb07dcb441e6ee4b11d8df0ac856038f944ab98b7be6b27b2a3c7feef19"},
+]
+"playwright 1.25.2" = [
+    {url = "https://files.pythonhosted.org/packages/09/5c/b67c848287b61507d0746d6aa25c8be0a636be5db6d15ae1f3a5dc7e792c/playwright-1.25.2-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:fef1e08789732896c4de512c33e20199e27fd0effec08342db7cf1499b1cccb3"},
+    {url = "https://files.pythonhosted.org/packages/72/f4/dd7a14cca868b322b32914f0df5468535fe1b1737d24c5d0ce09eca63e8c/playwright-1.25.2-py3-none-win_amd64.whl", hash = "sha256:68ae739f82b78717123eb9d1b28b4619f0b368b88ef73c633681e267680697cd"},
+    {url = "https://files.pythonhosted.org/packages/bb/65/9f0c4511ae6cd6cfe4f42768f8ff8eb992775cafece2d8f8695352a025a5/playwright-1.25.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:8e08ddd366db671017d6b741f324ac797c8681c3099c0b9a17185f2aac3a9224"},
+    {url = "https://files.pythonhosted.org/packages/bc/af/2c991da4fb5d148a92e54290b31146a68f4bf8f3e58414e7832976da2867/playwright-1.25.2-py3-none-manylinux1_x86_64.whl", hash = "sha256:4ccf36445a435e71e2436d08b112bcb28db6afab1c0605e94d4037f1309a24f9"},
+    {url = "https://files.pythonhosted.org/packages/be/19/a389e2bcebe130d6c47b989cb1c7b951561a10b4653e7f9e0e307cfa5a3d/playwright-1.25.2-py3-none-win32.whl", hash = "sha256:b49680ad62a6e070ef857475256bc4f2cfb3242de96c12a2cae35b36564c78cb"},
+    {url = "https://files.pythonhosted.org/packages/eb/40/c621d7b9b8c4409ca9b7629f18659d20a02d994a526e4d903173bca68c4b/playwright-1.25.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:69b6260ac98df49a868bbf8c44c324f821d359b9f2fbf18b656e836374988e5b"},
+    {url = "https://files.pythonhosted.org/packages/fb/e7/b036d33593cf1b8c9e7dacee9010c45d2a217b0520914d7e578f96e3aaff/playwright-1.25.2-py3-none-macosx_11_0_universal2.whl", hash = "sha256:24976035e50fc4c6af0c5c57c4de460c2db4f6590b63150c40fbe707c160ce6e"},
+]
+"pycodestyle 2.9.1" = [
+    {url = "https://files.pythonhosted.org/packages/67/e4/fc77f1039c34b3612c4867b69cbb2b8a4e569720b1f19b0637002ee03aff/pycodestyle-2.9.1-py2.py3-none-any.whl", hash = "sha256:d1735fc58b418fd7c5f658d28d943854f8a849b01a5d0a1e6f3f3fdd0166804b"},
+    {url = "https://files.pythonhosted.org/packages/b6/83/5bcaedba1f47200f0665ceb07bcb00e2be123192742ee0edfb66b600e5fd/pycodestyle-2.9.1.tar.gz", hash = "sha256:2c9607871d58c76354b697b42f5d57e1ada7d261c261efac224b664affdc5785"},
+]
+"pyee 8.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/0d/0a/933b3931107e1da186963fd9bb9bceb9a613cff034cb0fb3b0c61003f357/pyee-8.1.0-py2.py3-none-any.whl", hash = "sha256:383973b63ad7ed5e3c0311f8b179c52981f9e7b3eaea0e9a830d13ec34dde65f"},
+    {url = "https://files.pythonhosted.org/packages/fd/f8/d1c597ce15f3fd32ebdec9695da97a1af6e102c1ad8f9de32db84b05986c/pyee-8.1.0.tar.gz", hash = "sha256:92dacc5bd2bdb8f95aa8dd2585d47ca1c4840e2adb95ccf90034d64f725bfd31"},
+]
+"pyflakes 2.5.0" = [
+    {url = "https://files.pythonhosted.org/packages/07/92/f0cb5381f752e89a598dd2850941e7f570ac3cb8ea4a344854de486db152/pyflakes-2.5.0.tar.gz", hash = "sha256:491feb020dca48ccc562a8c0cbe8df07ee13078df59813b83959cbdada312ea3"},
+    {url = "https://files.pythonhosted.org/packages/dc/13/63178f59f74e53acc2165aee4b002619a3cfa7eeaeac989a9eb41edf364e/pyflakes-2.5.0-py2.py3-none-any.whl", hash = "sha256:4579f67d887f804e67edb544428f264b7b24f435b263c4614f384135cea553d2"},
+]
+"statv 0.3.2" = [
+    {url = "https://files.pythonhosted.org/packages/17/94/90af52fbb882f7d5a86f75b8f151fabb3540a01b592d5c12646b55712266/statv-0.3.2-py3-none-any.whl", hash = "sha256:32e430b21ab6a62695c67ab6cae3dba6e01e9c3fdbc9344e3236ad7a1f51d0c7"},
+    {url = "https://files.pythonhosted.org/packages/eb/34/55f3fde006d8d6c1f8d2422856360a9fde6a3f81dcd79f9203cfeac5b9dc/statv-0.3.2.tar.gz", hash = "sha256:fb4df2a37bf7a792e36a6e657c74cbdef9e2cdb8de3a0762b28b35c9e13f0fdd"},
+]
+"tomli 2.0.1" = [
+    {url = "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
+    {url = "https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+"typing-extensions 4.3.0" = [
+    {url = "https://files.pythonhosted.org/packages/9e/1d/d128169ff58c501059330f1ad96ed62b79114a2eb30b8238af63a2e27f70/typing_extensions-4.3.0.tar.gz", hash = "sha256:e6d2677a32f47fc7eb2795db1dd15c1f34eff616bcaf2cfb5e997f854fa1c4a6"},
+    {url = "https://files.pythonhosted.org/packages/ed/d6/2afc375a8d55b8be879d6b4986d4f69f01115e795e36827fd3a40166028b/typing_extensions-4.3.0-py3-none-any.whl", hash = "sha256:25642c956049920a5aa49edcdd6ab1e06d7e5d467fc00e0506c44ac86fbfca02"},
+]
+"websockets 10.1" = [
+    {url = "https://files.pythonhosted.org/packages/01/8f/3d1cc1bc9b611143142f18195960f583c78b4f7378b530d7e3b465d85c73/websockets-10.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:3bbf080f3892ba1dc8838786ec02899516a9d227abe14a80ef6fd17d4fb57127"},
+    {url = "https://files.pythonhosted.org/packages/03/8f/0a7508de475edbf8837287baef4af3a238dbb5a991db96fa0554198b6065/websockets-10.1-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:98de71f86bdb29430fd7ba9997f47a6b10866800e3ea577598a786a785701bb0"},
+    {url = "https://files.pythonhosted.org/packages/05/40/735d7bfe28ca48a716c3ab1176154246f983ff549490f85a4e0dce030f1e/websockets-10.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:05e7f098c76b0a4743716590bb8f9706de19f1ef5148d61d0cf76495ec3edb9c"},
+    {url = "https://files.pythonhosted.org/packages/05/de/8c91177bdd1ea01d7e55d6f6f9e163586e4a08b4cbbabbba32bfa94af1f3/websockets-10.1-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:483edee5abed738a0b6a908025be47f33634c2ad8e737edd03ffa895bd600909"},
+    {url = "https://files.pythonhosted.org/packages/07/c7/21d632039a17c4afde555473c04bff6fd3a88a24269a6374589f8d15a0db/websockets-10.1-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:0d93b7cadc761347d98da12ec1930b5c71b2096f1ceed213973e3cda23fead9c"},
+    {url = "https://files.pythonhosted.org/packages/0f/f8/767082ac41e21adac985c7fc16b29163c653d68724d659999488a934181f/websockets-10.1-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:5560558b0dace8312c46aa8915da977db02738ac8ecffbc61acfbfe103e10155"},
+    {url = "https://files.pythonhosted.org/packages/1a/f8/a75e1dc628a01a73317d7c0580223e298feb4ab14522f980d3eebd32a6c1/websockets-10.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:38db6e2163b021642d0a43200ee2dec8f4980bdbda96db54fde72b283b54cbfc"},
+    {url = "https://files.pythonhosted.org/packages/22/d7/e049472bdde709a1d90ddc7404d229195855b1d44725bc97f49a26d38820/websockets-10.1-cp37-cp37m-win_amd64.whl", hash = "sha256:89e985d40d407545d5f5e2e58e1fdf19a22bd2d8cd54d20a882e29f97e930a0a"},
+    {url = "https://files.pythonhosted.org/packages/26/9e/294b533899b07530a4dc865754d12b1fd9b62b85312072c7576bd2dbcda6/websockets-10.1-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:6b014875fae19577a392372075e937ebfebf53fd57f613df07b35ab210f31534"},
+    {url = "https://files.pythonhosted.org/packages/27/86/670dfb382866e3c85f1009d3126b59c04a42a20507c03a5ca1aeab1ebba9/websockets-10.1-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:e259be0863770cb91b1a6ccf6907f1ac2f07eff0b7f01c249ed751865a70cb0d"},
+    {url = "https://files.pythonhosted.org/packages/28/11/d2f6a370409de7e3450ea20688ac0617de5c007112e8a3cc122e53a543cf/websockets-10.1-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:10edd9d7d3581cfb9ff544ac09fc98cab7ee8f26778a5a8b2d5fd4b0684c5ba5"},
+    {url = "https://files.pythonhosted.org/packages/32/0a/02ad45a26722d67fb45371f071df342b2ce93c9146a57adeb96f51aad871/websockets-10.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:97b4b68a2ddaf5c4707ae79c110bfd874c5be3c6ac49261160fb243fa45d8bbb"},
+    {url = "https://files.pythonhosted.org/packages/43/5f/b237bebc4c483a17c2a2104fdcc2ed4322ac7fcb067917714b366480ce56/websockets-10.1-cp39-cp39-win_amd64.whl", hash = "sha256:882c0b8bdff3bf1bd7f024ce17c6b8006042ec4cceba95cf15df57e57efa471c"},
+    {url = "https://files.pythonhosted.org/packages/45/19/fd181b8f76311934167512abe296f2bf030e6f078737550b7f5061fb7d05/websockets-10.1-cp38-cp38-win_amd64.whl", hash = "sha256:7d6673b2753f9c5377868a53445d0c321ef41ff3c8e3b6d57868e72054bfce5f"},
+    {url = "https://files.pythonhosted.org/packages/45/21/cf8eab8fc5e7a337a00130101579e5e26928ba49e7991b57411a73ef14e4/websockets-10.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:e4819c6fb4f336fd5388372cb556b1f3a165f3f68e66913d1a2fc1de55dc6f58"},
+    {url = "https://files.pythonhosted.org/packages/46/20/9c654209dfa0ef7d5ee7b4c5acb2bdff7f12301ebd3fe71795e1260f99f5/websockets-10.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:cfae282c2aa7f0c4be45df65c248481f3509f8c40ca8b15ed96c35668ae0ff69"},
+    {url = "https://files.pythonhosted.org/packages/46/29/d3149fad6c8f74385eb3671f2439ff8d45a736a5365b02921bdece8aa3b1/websockets-10.1-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8877861e3dee38c8d302eee0d5dbefa6663de3b46dc6a888f70cd7e82562d1f7"},
+    {url = "https://files.pythonhosted.org/packages/50/6d/6728d41f21cb1a46a3896f3b368f6f1e73a997f2ebcf9b1913b4f40e74c4/websockets-10.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:ddab2dc69ee5ae27c74dbfe9d7bb6fee260826c136dca257faa1a41d1db61a89"},
+    {url = "https://files.pythonhosted.org/packages/55/2d/0596f3512452ea583c35a8f04bec64903540b81e9745c54264f37a262515/websockets-10.1-cp310-cp310-win32.whl", hash = "sha256:d0d81b46a5c87d443e40ce2272436da8e6092aa91f5fbeb60d1be9f11eff5b4c"},
+    {url = "https://files.pythonhosted.org/packages/56/56/16bc4c4a52b11bdcd287db9af006eab017b9dc7c363ebdf010958b080a71/websockets-10.1-cp37-cp37m-win32.whl", hash = "sha256:3ef6f73854cded34e78390dbdf40dfdcf0b89b55c0e282468ef92646fce8d13a"},
+    {url = "https://files.pythonhosted.org/packages/56/f3/056802e202420e9511f4a3a590eefe379d657d1f6370e3c69b4166159f44/websockets-10.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bb01ea7b5f52e7125bdc3c5807aeaa2d08a0553979cf2d96a8b7803ea33e15e7"},
+    {url = "https://files.pythonhosted.org/packages/63/2b/ac947d5fd0f1041a41338095327e013fcffd78048810a748e5569fbc469f/websockets-10.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:a249139abc62ef333e9e85064c27fefb113b16ffc5686cefc315bdaef3eefbc8"},
+    {url = "https://files.pythonhosted.org/packages/68/90/73fc4d024f35057dc4cbfb46f0703e3afa5cd55f2533bb66a8338f326737/websockets-10.1-cp39-cp39-win32.whl", hash = "sha256:d9b245db5a7e64c95816e27d72830e51411c4609c05673d1ae81eb5d23b0be54"},
+    {url = "https://files.pythonhosted.org/packages/69/77/591bbc51a5ed6a906a7813e60a9627f988f9546513fcf9d250eb31ec8689/websockets-10.1.tar.gz", hash = "sha256:181d2b25de5a437b36aefedaf006ecb6fa3aa1328ec0236cdde15f32f9d3ff6d"},
+    {url = "https://files.pythonhosted.org/packages/71/1f/673f3ac7ace63b45b419925ebd13dca940cc40e9c31324709bb0b1d7353e/websockets-10.1-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:531d8eb013a9bc6b3ad101588182aa9b6dd994b190c56df07f0d84a02b85d530"},
+    {url = "https://files.pythonhosted.org/packages/79/08/94dce7204943f811e8a2856b9e89e6897879bd9ff70e0df91fe2ec74ede2/websockets-10.1-cp38-cp38-win32.whl", hash = "sha256:3a02ab91d84d9056a9ee833c254895421a6333d7ae7fff94b5c68e4fa8095519"},
+    {url = "https://files.pythonhosted.org/packages/79/1d/81c6407272a90ced6c1d04e3c0a30e76616ff7bc2f4c9f148f8d61f48d0a/websockets-10.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:1d858fb31e5ac992a2cdf17e874c95f8a5b1e917e1fb6b45ad85da30734b223f"},
+    {url = "https://files.pythonhosted.org/packages/7e/59/d838b4880bf84c93c8262e874a7ad7a280798a13bf1eb8a2e89e6a9911ac/websockets-10.1-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:08a42856158307e231b199671c4fce52df5786dd3d703f36b5d8ac76b206c485"},
+    {url = "https://files.pythonhosted.org/packages/7f/f2/4e84569fc12df22d395fcfc7e981ed67e09f37bd7df2bec0682e950715fe/websockets-10.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7c9407719f42cb77049975410490c58a705da6af541adb64716573e550e5c9db"},
+    {url = "https://files.pythonhosted.org/packages/8f/43/cf737c90e8a32b4fbc12f69f8dd4f9c736205c8de0e5dcaa650cb009bafc/websockets-10.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:7bdd3d26315db0a9cf8a0af30ca95e0aa342eda9c1377b722e71ccd86bc5d1dd"},
+    {url = "https://files.pythonhosted.org/packages/97/f1/9d432335a5133373f87b50bc315802f6800665045a0fde32190cc84d6d5d/websockets-10.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:3477146d1f87ead8df0f27e8960249f5248dceb7c2741e8bbec9aa5338d0c053"},
+    {url = "https://files.pythonhosted.org/packages/9e/b5/e8a2e9e3aafdb03cd52c07199c551115b963fdca96f1231683be086b4743/websockets-10.1-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:002071169d2e44ce8eb9e5ebac9fbce142ba4b5146eef1cfb16b177a27662657"},
+    {url = "https://files.pythonhosted.org/packages/b3/5f/786c0d3007f0141b3a2e472910aadd040a4b76f5a07ae983debfb2983d7d/websockets-10.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:14e9cf68a08d1a5d42109549201aefba473b1d925d233ae19035c876dd845da9"},
+    {url = "https://files.pythonhosted.org/packages/b3/ee/296bd40dc0fcdb9bb5d623b35279c25a2f3738499ffe09e53d2aedabcbe4/websockets-10.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:e3872ae57acd4306ecf937d36177854e218e999af410a05c17168cd99676c512"},
+    {url = "https://files.pythonhosted.org/packages/c0/62/fe56120b62991c147c1da2f69847a1a26e99a1f264ddb42dfe9ac66be018/websockets-10.1-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:667c41351a6d8a34b53857ceb8343a45c85d438ee4fd835c279591db8aeb85be"},
+    {url = "https://files.pythonhosted.org/packages/c7/34/7de70125a2c8e0f6ac04835d5573554cb34a71ada405b05cb44b9696e30e/websockets-10.1-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:6fdec1a0b3e5630c58e3d8704d2011c678929fce90b40908c97dfc47de8dca72"},
+    {url = "https://files.pythonhosted.org/packages/c7/e5/e70f74ead63c51daef2c5a3f71107bf306dcf6363c2473249b5190ac0b24/websockets-10.1-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:9f304a22ece735a3da8a51309bc2c010e23961a8f675fae46fdf62541ed62123"},
+    {url = "https://files.pythonhosted.org/packages/ca/29/9cdafe3779b2793b33c6a35fc0a95b89800c9915fbe285097f6e68e9f1cd/websockets-10.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:5bb6256de5a4fb1d42b3747b4e2268706c92965d75d0425be97186615bf2f24f"},
+    {url = "https://files.pythonhosted.org/packages/cb/43/f8ba4167640b716a6a04f793f15296e48f0295756d28902d05c2bdc0671f/websockets-10.1-cp310-cp310-win_amd64.whl", hash = "sha256:b68b6caecb9a0c6db537aa79750d1b592a841e4f1a380c6196091e65b2ad35f9"},
+    {url = "https://files.pythonhosted.org/packages/ce/62/fd0a9a35de987ac25d62bc78f8bf1fa72842de2cd8bd17f3a580104b7bc4/websockets-10.1-pp37-pypy37_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:816ae7dac2c6522cfa620947ead0ca95ac654916eebf515c94d7c28de5601a6e"},
+    {url = "https://files.pythonhosted.org/packages/d5/7e/cd3e43c7b6e6d32e303f0733c459e30376fd853bcf2ece0a029052d866a8/websockets-10.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:b66e6d514f12c28d7a2d80bb2a48ef223342e99c449782d9831b0d29a9e88a17"},
+    {url = "https://files.pythonhosted.org/packages/d5/83/214361421ed3fc77dda83e4dddd8d7c290512c22a5ee5af887bba5824140/websockets-10.1-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:468f0031fdbf4d643f89403a66383247eb82803430b14fa27ce2d44d2662ca37"},
+    {url = "https://files.pythonhosted.org/packages/d8/63/84a7f6da547f3fff7b9eb96087813bbc273f94901be7a5d5a71a826c22e5/websockets-10.1-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:baa83174390c0ff4fc1304fbe24393843ac7a08fdd59295759c4b439e06b1536"},
+    {url = "https://files.pythonhosted.org/packages/e0/a2/7cb9cfb4f201b91c2add7c5964136a58836baa3231d0367d1c93db667ba6/websockets-10.1-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:1dafe98698ece09b8ccba81b910643ff37198e43521d977be76caf37709cf62b"},
+    {url = "https://files.pythonhosted.org/packages/e4/b1/04c08d6ba819a3864970301c49d2beb08565045fbf3aa85926df397570ee/websockets-10.1-cp37-cp37m-musllinux_1_1_i686.whl", hash = "sha256:189ed478395967d6a98bb293abf04e8815349e17456a0a15511f1088b6cb26e4"},
+    {url = "https://files.pythonhosted.org/packages/e4/d9/e605c1e5b6b588936b74fa1cac0b7cf1193b10baffa0c1595662cb5216b6/websockets-10.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:9fd62c6dc83d5d35fb6a84ff82ec69df8f4657fff05f9cd6c7d9bec0dd57f0f6"},
+    {url = "https://files.pythonhosted.org/packages/f1/02/58a8df47a0db00553259bf87c6f8cbfebe5defd90dbe359970ce18229ca4/websockets-10.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:e1b60fd297adb9fc78375778a5220da7f07bf54d2a33ac781319650413fc6a60"},
+    {url = "https://files.pythonhosted.org/packages/f8/ad/97acfaccdc96c0305337164d47d34478c377549d53c1e8a67459f0bbe56d/websockets-10.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:888a5fa2a677e0c2b944f9826c756475980f1b276b6302e606f5c4ff5635be9e"},
+]
+"win32-setctime 1.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/0a/e6/a7d828fef907843b2a5773ebff47fb79ac0c1c88d60c0ca9530ee941e248/win32_setctime-1.1.0-py3-none-any.whl", hash = "sha256:231db239e959c2fe7eb1d7dc129f11172354f98361c4fa2d6d2d7e278baa8aad"},
+    {url = "https://files.pythonhosted.org/packages/6b/dd/f95a13d2b235a28d613ba23ebad55191514550debb968b46aab99f2e3a30/win32_setctime-1.1.0.tar.gz", hash = "sha256:15cf5750465118d6929ae4de4eb46e8edae9a5634350c01ba582df868e932cb2"},
+]
