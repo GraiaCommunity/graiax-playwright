@@ -1,13 +1,12 @@
-import pathlib
-import typing
-from typing import TYPE_CHECKING, Any, Dict, Literal
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Dict, List, Literal, Optional, Union
 
 from launart import Service
 from playwright._impl._api_structures import ProxySettings
 from playwright.async_api import Browser, Playwright, async_playwright
-from typing_extensions import ParamSpec, TypedDict
+from typing_extensions import ParamSpec
 
-from graiax.playwright.interface import PlaywrightBrowser, PlaywrightBrowserImpl
+from .interface import PlaywrightBrowser, PlaywrightBrowserImpl
 from .utils import install_playwright
 
 P = ParamSpec("P")
@@ -27,30 +26,32 @@ class PlaywrightService(Service):
     browser: Browser
     browser_type: str
     launch_config: Dict[str, Any]
+    playwright_download_host: Optional[str]
 
     if TYPE_CHECKING:
 
         def __init__(
             self,
             browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+            playwright_download_host: Optional[str] = None,
             *,
-            executable_path: typing.Optional[typing.Union[str, pathlib.Path]] = None,
-            channel: typing.Optional[str] = None,
-            args: typing.Optional[typing.List[str]] = None,
-            ignore_default_args: typing.Optional[typing.Union[bool, typing.List[str]]] = None,
-            handle_sigint: typing.Optional[bool] = None,
-            handle_sigterm: typing.Optional[bool] = None,
-            handle_sighup: typing.Optional[bool] = None,
-            timeout: typing.Optional[float] = None,
-            env: typing.Optional[typing.Dict[str, typing.Union[str, float, bool]]] = None,
-            headless: typing.Optional[bool] = None,
-            devtools: typing.Optional[bool] = None,
-            proxy: typing.Optional[ProxySettings] = None,
-            downloads_path: typing.Optional[typing.Union[str, pathlib.Path]] = None,
-            slow_mo: typing.Optional[float] = None,
-            traces_dir: typing.Optional[typing.Union[str, pathlib.Path]] = None,
-            chromium_sandbox: typing.Optional[bool] = None,
-            firefox_user_prefs: typing.Optional[typing.Dict[str, typing.Union[str, float, bool]]] = None,
+            executable_path: Optional[Union[str, Path]] = None,
+            channel: Optional[str] = None,
+            args: Optional[List[str]] = None,
+            ignore_default_args: Optional[Union[bool, List[str]]] = None,
+            handle_sigint: Optional[bool] = None,
+            handle_sigterm: Optional[bool] = None,
+            handle_sighup: Optional[bool] = None,
+            timeout: Optional[float] = None,
+            env: Optional[Dict[str, Union[str, float, bool]]] = None,
+            headless: Optional[bool] = None,
+            devtools: Optional[bool] = None,
+            proxy: Optional[ProxySettings] = None,
+            downloads_path: Optional[Union[str, Path]] = None,
+            slow_mo: Optional[float] = None,
+            traces_dir: Optional[Union[str, Path]] = None,
+            chromium_sandbox: Optional[bool] = None,
+            firefox_user_prefs: Optional[Dict[str, Union[str, float, bool]]] = None,
         ):
             ...
 
@@ -59,10 +60,12 @@ class PlaywrightService(Service):
         def __init__(
             self,
             browser_type: Literal["chromium", "firefox", "webkit"],
+            playwright_download_host: Optional[str] = None,
             **kwargs,
         ) -> None:
             self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
             self.launch_config = kwargs
+            self.playwright_download_host = playwright_download_host
             super().__init__()
 
     def get_interface(self, _):
@@ -77,8 +80,9 @@ class PlaywrightService(Service):
         return {"preparing", "cleanup"}
 
     async def launch(self, _):
-        await install_playwright()
+        await install_playwright(self.playwright_download_host)
         playwright_mgr = async_playwright()
+
         async with self.stage("preparing"):
             self.playwright = await playwright_mgr.__aenter__()
             browser_type = {
@@ -87,5 +91,6 @@ class PlaywrightService(Service):
                 "webkit": self.playwright.webkit,
             }[self.browser_type]
             self.browser = await browser_type.launch(**self.launch_config)
+
         async with self.stage("cleanup"):
             await playwright_mgr.__aexit__()
