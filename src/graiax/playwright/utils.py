@@ -20,7 +20,7 @@ async def install_playwright(download_host: Optional[str] = None):
         *command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT, env=env
     )
     if shell.stdout is not None:
-        first_line = (await shell.stdout.readline()).decode('UTF-8')
+        first_line = (await shell.stdout.readline()).decode("UTF-8")
 
         if not first_line:
             await shell.wait()
@@ -32,16 +32,16 @@ async def install_playwright(download_host: Optional[str] = None):
             shell.kill()
             return
 
-        while line := (await shell.stdout.readline()).decode('UTF-8'):
+        while line := (await shell.stdout.readline()).decode("UTF-8"):
             percent = select.findall(line)
             if percent and (time.time() - last_progress_time > 1 or percent[0] == "100"):
                 logger.info(f"Downloading {percent[0]}%")
                 last_progress_time = time.time()
-            elif 'downloaded' in line:
+            elif "downloaded" in line:
                 if (p := downloaded.match(line)) is not None:
                     p = p.groupdict()
                     logger.info(f"{p['file']} 下载成功，下载位置：{p['path']}")
-            elif 'Downloading' in line:
+            elif "Downloading" in line:
                 logger.info(f"Downloading {line[12:-1]}")
             elif line == "Failed to install browsers\n":
                 message = await shell.stdout.read()

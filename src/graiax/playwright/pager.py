@@ -1,6 +1,5 @@
-import pathlib
-import typing
-from typing import AsyncContextManager, Literal
+from pathlib import Path
+from typing import AsyncContextManager, Dict, List, Literal, Optional, Pattern, Union
 
 from playwright._impl._api_structures import (
     Geolocation,
@@ -14,40 +13,40 @@ from typing_extensions import TypedDict, Unpack
 
 
 class Parameters(TypedDict, total=False):
-    viewport: typing.Optional[ViewportSize]
-    screen: typing.Optional[ViewportSize]
-    no_viewport: typing.Optional[bool]
-    ignore_https_errors: typing.Optional[bool]
-    java_script_enabled: typing.Optional[bool]
-    bypass_csp: typing.Optional[bool]
-    user_agent: typing.Optional[str]
-    locale: typing.Optional[str]
-    timezone_id: typing.Optional[str]
-    geolocation: typing.Optional[Geolocation]
-    permissions: typing.Optional[typing.List[str]]
-    extra_http_headers: typing.Optional[typing.Dict[str, str]]
-    offline: typing.Optional[bool]
-    http_credentials: typing.Optional[HttpCredentials]
-    device_scale_factor: typing.Optional[float]
-    is_mobile: typing.Optional[bool]
-    has_touch: typing.Optional[bool]
-    color_scheme: typing.Optional[Literal["dark", "light", "no-preference"]]
-    forced_colors: typing.Optional[Literal["active", "none"]]
-    reduced_motion: typing.Optional[Literal["no-preference", "reduce"]]
-    accept_downloads: typing.Optional[bool]
-    default_browser_type: typing.Optional[str]
-    proxy: typing.Optional[ProxySettings]
-    record_har_path: typing.Optional[typing.Union[str, pathlib.Path]]
-    record_har_omit_content: typing.Optional[bool]
-    record_video_dir: typing.Optional[typing.Union[str, pathlib.Path]]
-    record_video_size: typing.Optional[ViewportSize]
-    storage_state: typing.Optional[typing.Union[StorageState, str, pathlib.Path]]
-    base_url: typing.Optional[str]
-    strict_selectors: typing.Optional[bool]
-    service_workers: typing.Optional[Literal["allow", "block"]]
-    record_har_url_filter: typing.Optional[typing.Union[str, typing.Pattern[str]]]
-    record_har_mode: typing.Optional[Literal["full", "minimal"]]
-    record_har_content: typing.Optional[Literal["attach", "embed", "omit"]]
+    viewport: Optional[ViewportSize]
+    screen: Optional[ViewportSize]
+    no_viewport: Optional[bool]
+    ignore_https_errors: Optional[bool]
+    java_script_enabled: Optional[bool]
+    bypass_csp: Optional[bool]
+    user_agent: Optional[str]
+    locale: Optional[str]
+    timezone_id: Optional[str]
+    geolocation: Optional[Geolocation]
+    permissions: Optional[List[str]]
+    extra_http_headers: Optional[Dict[str, str]]
+    offline: Optional[bool]
+    http_credentials: Optional[HttpCredentials]
+    device_scale_factor: Optional[float]
+    is_mobile: Optional[bool]
+    has_touch: Optional[bool]
+    color_scheme: Optional[Literal["dark", "light", "no-preference"]]
+    forced_colors: Optional[Literal["active", "none"]]
+    reduced_motion: Optional[Literal["no-preference", "reduce"]]
+    accept_downloads: Optional[bool]
+    default_browser_type: Optional[str]
+    proxy: Optional[ProxySettings]
+    record_har_path: Optional[Union[str, Path]]
+    record_har_omit_content: Optional[bool]
+    record_video_dir: Optional[Union[str, Path]]
+    record_video_size: Optional[ViewportSize]
+    storage_state: Optional[Union[StorageState, str, Path]]
+    base_url: Optional[str]
+    strict_selectors: Optional[bool]
+    service_workers: Optional[Literal["allow", "block"]]
+    record_har_url_filter: Optional[Union[str, Pattern[str]]]
+    record_har_mode: Optional[Literal["full", "minimal"]]
+    record_har_content: Optional[Literal["attach", "embed", "omit"]]
 
 
 class RegularPage(AsyncContextManager[Page]):

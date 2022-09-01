@@ -1,9 +1,18 @@
 from __future__ import annotations
 
-import pathlib
-import typing
 from contextlib import asynccontextmanager
-from typing import TYPE_CHECKING, Any, AsyncGenerator, Literal
+from pathlib import Path
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    AsyncGenerator,
+    Dict,
+    List,
+    Literal,
+    Optional,
+    Pattern,
+    Union,
+)
 
 from launart import ExportInterface
 from playwright._impl._api_structures import (
@@ -13,8 +22,8 @@ from playwright._impl._api_structures import (
     StorageState,
     ViewportSize,
 )
-from playwright.async_api import Browser, BrowserContext, Page
-from typing_extensions import TypedDict, Unpack
+from playwright.async_api import Browser, Page
+from typing_extensions import Unpack
 
 from graiax.playwright.pager import ContextualPage, Parameters, RegularPage
 
@@ -55,54 +64,54 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         self,
         *,
         context: bool = False,
-        viewport: typing.Optional[ViewportSize] = None,
-        screen: typing.Optional[ViewportSize] = None,
-        no_viewport: typing.Optional[bool] = None,
-        ignore_https_errors: typing.Optional[bool] = None,
-        java_script_enabled: typing.Optional[bool] = None,
-        bypass_csp: typing.Optional[bool] = None,
-        user_agent: typing.Optional[str] = None,
-        locale: typing.Optional[str] = None,
-        timezone_id: typing.Optional[str] = None,
-        geolocation: typing.Optional[Geolocation] = None,
-        permissions: typing.Optional[typing.List[str]] = None,
-        extra_http_headers: typing.Optional[typing.Dict[str, str]] = None,
-        offline: typing.Optional[bool] = None,
-        http_credentials: typing.Optional[HttpCredentials] = None,
-        device_scale_factor: typing.Optional[float] = None,
-        is_mobile: typing.Optional[bool] = None,
-        has_touch: typing.Optional[bool] = None,
-        color_scheme: typing.Optional[Literal["dark", "light", "no-preference"]] = None,
-        forced_colors: typing.Optional[Literal["active", "none"]] = None,
-        reduced_motion: typing.Optional[Literal["no-preference", "reduce"]] = None,
-        accept_downloads: typing.Optional[bool] = None,
-        default_browser_type: typing.Optional[str] = None,
-        proxy: typing.Optional[ProxySettings] = None,
-        record_har_path: typing.Optional[typing.Union[str, pathlib.Path]] = None,
-        record_har_omit_content: typing.Optional[bool] = None,
-        record_video_dir: typing.Optional[typing.Union[str, pathlib.Path]] = None,
-        record_video_size: typing.Optional[ViewportSize] = None,
-        storage_state: typing.Optional[typing.Union[StorageState, str, pathlib.Path]] = None,
-        base_url: typing.Optional[str] = None,
-        strict_selectors: typing.Optional[bool] = None,
-        service_workers: typing.Optional[Literal["allow", "block"]] = None,
-        record_har_url_filter: typing.Optional[typing.Union[str, typing.Pattern[str]]] = None,
-        record_har_mode: typing.Optional[Literal["full", "minimal"]] = None,
-        record_har_content: typing.Optional[Literal["attach", "embed", "omit"]] = None,
+        viewport: Optional[ViewportSize] = None,
+        screen: Optional[ViewportSize] = None,
+        no_viewport: Optional[bool] = None,
+        ignore_https_errors: Optional[bool] = None,
+        java_script_enabled: Optional[bool] = None,
+        bypass_csp: Optional[bool] = None,
+        user_agent: Optional[str] = None,
+        locale: Optional[str] = None,
+        timezone_id: Optional[str] = None,
+        geolocation: Optional[Geolocation] = None,
+        permissions: Optional[List[str]] = None,
+        extra_http_headers: Optional[Dict[str, str]] = None,
+        offline: Optional[bool] = None,
+        http_credentials: Optional[HttpCredentials] = None,
+        device_scale_factor: Optional[float] = None,
+        is_mobile: Optional[bool] = None,
+        has_touch: Optional[bool] = None,
+        color_scheme: Optional[Literal["dark", "light", "no-preference"]] = None,
+        forced_colors: Optional[Literal["active", "none"]] = None,
+        reduced_motion: Optional[Literal["no-preference", "reduce"]] = None,
+        accept_downloads: Optional[bool] = None,
+        default_browser_type: Optional[str] = None,
+        proxy: Optional[ProxySettings] = None,
+        record_har_path: Optional[Union[str, Path]] = None,
+        record_har_omit_content: Optional[bool] = None,
+        record_video_dir: Optional[Union[str, Path]] = None,
+        record_video_size: Optional[ViewportSize] = None,
+        storage_state: Optional[Union[StorageState, str, Path]] = None,
+        base_url: Optional[str] = None,
+        strict_selectors: Optional[bool] = None,
+        service_workers: Optional[Literal["allow", "block"]] = None,
+        record_har_url_filter: Optional[Union[str, Pattern[str]]] = None,
+        record_har_mode: Optional[Literal["full", "minimal"]] = None,
+        record_har_content: Optional[Literal["attach", "embed", "omit"]] = None,
     ) -> AsyncGenerator[Page, None]:
         """获得一个浏览器页面
 
         Args:
-            context: bool, 是否使用
+            context: bool, 是否使用 Browser Context，详见 <https://playwright.dev/python/docs/browser-contexts#browser-context>
 
         Usage:
             ```python
             from graiax.playwright import PlaywrightBrowser
 
             browser = launart.get_interface(PlaywrightBrowser)
-            async with browser.get_page(context=True, viewport={'width': 800, 'height': 10}, device_scale_factor=1.5) as page:
-                await page.set_content('Hello World!')
-                img = await page.screenshot(type='jpeg', quality=80, full_page=True, scale='device')
+            async with browser.page(context=True, viewport={"width": 800, "height": 10}, device_scale_factor=1.5) as page:
+                await page.set_content("Hello World!")
+                img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
             ```
         """
         ...
