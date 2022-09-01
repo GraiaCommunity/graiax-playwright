@@ -55,7 +55,8 @@ from graiax.playwright import PlaywrightBrowser
 @listen(...)
 async def function(app: Ariadne):
     browser = app.launch_manager.get_interface(PlaywrightBrowser)
-    # 此处的 Browser 与 playwright.async_api.Browser 无异, 但要注意的是它并不能通过 `isinstance(browser, playwright.async_api.Browser)`.
+    # 此处的 Browser 之用法与 playwright.async_api.Browser 无异，但要注意的是下方代码的返回值为 False。
+    # `isinstance(browser, playwright.async_api.Browser)`
     async with browser.page( # 此为启用了自动上下文管理的 API.
         context=True, # 新建 Browser Context, 默认为 False.
         viewport={"width": 800, "height": 10},
