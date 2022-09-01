@@ -1,6 +1,15 @@
-# (WIP) GraiaX Playwright
+<div align="center">
 
-适用于 Graia Project 的 Playwright 管理器
+# GraiaX Playwright
+
+*适用于 Graia Project 的 Playwright 管理器*
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![License](https://img.shields.io/github/license/GraiaCommunity/graiax-playwright)](https://github.com/GraiaCommunity/graiax-playwright/blob/master/LICENSE)
+[![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
+
+</div>
 
 Graiax Playwright 使用 [launart](https://github.com/GraiaProject/launart) 作为启动管理器，
 适用于 [Ariadne](https://github.com/GraiaProject/Ariadne) 及 [Avilla](https://github.com/GraiaProject/Avilla)。
@@ -46,7 +55,7 @@ from graiax.playwright import PlaywrightBrowser
 @listen(...)
 async def function(app: Ariadne):
     browser = app.launch_manager.get_interface(PlaywrightBrowser)
-    # 此处的 Browser 与 playwright.async_api.Browser 无异.
+    # 此处的 Browser 与 playwright.async_api.Browser 无异, 但要注意的是它并不能通过 `isinstance(browser, playwright.async_api.Browser)`.
     async with browser.page( # 此为启用了自动上下文管理的 API.
         context=True, # 新建 Browser Context, 默认为 False.
         viewport={"width": 800, "height": 10},
@@ -56,3 +65,7 @@ async def function(app: Ariadne):
         img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale="device")
     ...
 ```
+
+## 许可证
+
+本项目使用 [`MIT`](./LICENSE) 许可证进行许可。
