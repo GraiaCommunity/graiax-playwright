@@ -1,37 +1,71 @@
-# -*- coding: utf-8 -*-
-
-from typing import Any, Optional
+import pathlib
+import typing
+from typing import TYPE_CHECKING, Any, Dict, Literal
 
 from launart import Service
+from playwright._impl._api_structures import ProxySettings
+from playwright.async_api import Browser, Playwright, async_playwright
+from typing_extensions import ParamSpec, TypedDict
 
-from .browser import ChromiumBrowser, PlaywrightBrowser
-from .provider import BrowserProvider
+from graiax.playwright.interface import PlaywrightBrowser, PlaywrightBrowserImpl
 
-# from .util import install_playwright
+P = ParamSpec("P")
 
 
-class BrowserService(Service):
+class PlaywrightService(Service):
     """用于 launart 的浏览器服务
 
     Args:
-        browser: BrowserProvider, 你要使用的浏览器，默认为 Chromium
-        **config, 启动浏览器所用的配置，即要传给 playwright.chromium.launch 的参数
+        browser_type(Literal["chromium", "firefox", "webkit"]): 你要使用的浏览器，默认为 Chromium
+        **kwargs: 参见 <https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch>
     """
 
     id = "web.render/playwright"
-    supported_interface_types = {BrowserProvider}
-    browser: PlaywrightBrowser
-    config: dict[str, Any]
+    supported_interface_types = {PlaywrightBrowser}
+    playwright: Playwright
+    browser: Browser
+    browser_type: str
+    launch_config: Dict[str, Any]
 
-    def __init__(self, browser: Optional[PlaywrightBrowser] = None, **config) -> None:
-        self.browser = browser or ChromiumBrowser()
-        self.config = config
-        super().__init__()
+    if TYPE_CHECKING:
 
-    def get_interface(self, interface_type):
-        if issubclass(interface_type, BrowserProvider):
-            return BrowserProvider(self.browser)
-        raise ValueError(f"unsupported interface type {interface_type}")
+        def __init__(
+            self,
+            browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+            *,
+            executable_path: typing.Optional[typing.Union[str, pathlib.Path]] = None,
+            channel: typing.Optional[str] = None,
+            args: typing.Optional[typing.List[str]] = None,
+            ignore_default_args: typing.Optional[typing.Union[bool, typing.List[str]]] = None,
+            handle_sigint: typing.Optional[bool] = None,
+            handle_sigterm: typing.Optional[bool] = None,
+            handle_sighup: typing.Optional[bool] = None,
+            timeout: typing.Optional[float] = None,
+            env: typing.Optional[typing.Dict[str, typing.Union[str, float, bool]]] = None,
+            headless: typing.Optional[bool] = None,
+            devtools: typing.Optional[bool] = None,
+            proxy: typing.Optional[ProxySettings] = None,
+            downloads_path: typing.Optional[typing.Union[str, pathlib.Path]] = None,
+            slow_mo: typing.Optional[float] = None,
+            traces_dir: typing.Optional[typing.Union[str, pathlib.Path]] = None,
+            chromium_sandbox: typing.Optional[bool] = None,
+            firefox_user_prefs: typing.Optional[typing.Dict[str, typing.Union[str, float, bool]]] = None,
+        ):
+            ...
+
+    else:
+
+        def __init__(
+            self,
+            browser_type: Literal["chromium", "firefox", "webkit"],
+            **kwargs,
+        ) -> None:
+            self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
+            self.launch_config = kwargs
+            super().__init__()
+
+    def get_interface(self, _):
+        return PlaywrightBrowserImpl(self, self.browser)
 
     @property
     def required(self):
@@ -43,8 +77,14 @@ class BrowserService(Service):
 
     async def launch(self, _):
         # install_playwright()  # TODO
+        playwright_mgr = async_playwright()
         async with self.stage("preparing"):
-            await self.browser.init(**self.config)
-            self.config = {}
+            self.playwright = await playwright_mgr.__aenter__()
+            browser_type = {
+                "chromium": self.playwright.chromium,
+                "firefox": self.playwright.firefox,
+                "webkit": self.playwright.webkit,
+            }[self.browser_type]
+            self.browser = await browser_type.launch(**self.launch_config)
         async with self.stage("cleanup"):
-            await self.browser.close()
+            await playwright_mgr.__aexit__()

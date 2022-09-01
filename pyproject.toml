@@ -1,14 +1,14 @@
 [project]
 name = "graiax-playwright"
-version = "1.0.0"
+version = "0.1.0"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     {name = "Redlnn", email = "w731347477@gmail.com"},
 ]
 dependencies = [
-    "loguru>=0.6.0",
-    "playwright>=1.25.2",
-    "launart>=0.6.1",
+    "loguru>=0.6.0,<1.0.0",
+    "playwright>=1.25.2,<2.0.0",
+    "launart>=0.6.1,<0.7.0",
 ]
 keywords = ["graia", "launart", "playwright"]
 requires-python = ">=3.8"
