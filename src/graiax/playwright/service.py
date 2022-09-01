@@ -8,6 +8,7 @@ from playwright.async_api import Browser, Playwright, async_playwright
 from typing_extensions import ParamSpec, TypedDict
 
 from graiax.playwright.interface import PlaywrightBrowser, PlaywrightBrowserImpl
+from .utils import install_playwright
 
 P = ParamSpec("P")
 
@@ -76,7 +77,7 @@ class PlaywrightService(Service):
         return {"preparing", "cleanup"}
 
     async def launch(self, _):
-        # install_playwright()  # TODO
+        await install_playwright()
         playwright_mgr = async_playwright()
         async with self.stage("preparing"):
             self.playwright = await playwright_mgr.__aenter__()
