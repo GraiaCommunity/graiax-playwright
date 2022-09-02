@@ -28,6 +28,11 @@ requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 summary = "Cross-platform colored terminal text."
 
 [[package]]
+name = "commonmark"
+version = "0.9.1"
+summary = "Python parser for the CommonMark Markdown spec"
+
+[[package]]
 name = "flake8"
 version = "5.0.4"
 requires_python = ">=3.6.1"
@@ -123,6 +128,33 @@ requires_python = ">=3.6"
 summary = "passive checker of Python programs"
 
 [[package]]
+name = "pygments"
+version = "2.13.0"
+requires_python = ">=3.6"
+summary = "Pygments is a syntax highlighting package written in Python."
+
+[[package]]
+name = "rich"
+version = "12.5.1"
+requires_python = ">=3.6.3,<4.0.0"
+summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+dependencies = [
+    "commonmark<0.10.0,>=0.9.0",
+    "pygments<3.0.0,>=2.6.0",
+    "typing-extensions<5.0,>=4.0.0; python_version < \"3.9\"",
+]
+
+[[package]]
+name = "richuru"
+version = "0.1.1"
+requires_python = ">=3.8"
+summary = "a bridge between loguru & rich, rich's powerful render in loguru!"
+dependencies = [
+    "loguru>=0.6.0",
+    "rich>=12.4.4",
+]
+
+[[package]]
 name = "statv"
 version = "0.3.2"
 requires_python = ">=3.8"
@@ -154,7 +186,7 @@ summary = "A small Python utility to set file creation time on Windows"
 
 [metadata]
 lock_version = "4.0"
-content_hash = "sha256:5e84254baf04dd40a820db779500271d3c1cfe0e29bc11e40eecd28f23cb72f7"
+content_hash = "sha256:56b41745ffa29bfb7739814fbae1b195a0e799ca06366828ddbc0ed355434ff9"
 
 [metadata.files]
 "black 22.8.0" = [
@@ -189,6 +221,10 @@ content_hash = "sha256:5e84254baf04dd40a820db779500271d3c1cfe0e29bc11e40eecd28f2
 "colorama 0.4.5" = [
     {url = "https://files.pythonhosted.org/packages/2b/65/24d033a9325ce42ccbfa3ca2d0866c7e89cc68e5b9d92ecaba9feef631df/colorama-0.4.5.tar.gz", hash = "sha256:e6c6b4334fc50988a639d9b98aa429a0b57da6e17b9a44f0451f930b6967b7a4"},
     {url = "https://files.pythonhosted.org/packages/77/8b/7550e87b2d308a1b711725dfaddc19c695f8c5fa413c640b2be01662f4e6/colorama-0.4.5-py2.py3-none-any.whl", hash = "sha256:854bf444933e37f5824ae7bfc1e98d5bce2ebe4160d46b5edf346a89358e99da"},
+]
+"commonmark 0.9.1" = [
+    {url = "https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz", hash = "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"},
+    {url = "https://files.pythonhosted.org/packages/b1/92/dfd892312d822f36c55366118b95d914e5f16de11044a27cf10a7d71bbbf/commonmark-0.9.1-py2.py3-none-any.whl", hash = "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"},
 ]
 "flake8 5.0.4" = [
     {url = "https://files.pythonhosted.org/packages/ad/00/9808c62b2d529cefc69ce4e4a1ea42c0f855effa55817b7327ec5b75e60a/flake8-5.0.4.tar.gz", hash = "sha256:6fbe320aad8d6b95cec8b8e47bc933004678dc63095be98528b7bdd2a9f510db"},
@@ -299,6 +335,18 @@ content_hash = "sha256:5e84254baf04dd40a820db779500271d3c1cfe0e29bc11e40eecd28f2
 "pyflakes 2.5.0" = [
     {url = "https://files.pythonhosted.org/packages/07/92/f0cb5381f752e89a598dd2850941e7f570ac3cb8ea4a344854de486db152/pyflakes-2.5.0.tar.gz", hash = "sha256:491feb020dca48ccc562a8c0cbe8df07ee13078df59813b83959cbdada312ea3"},
     {url = "https://files.pythonhosted.org/packages/dc/13/63178f59f74e53acc2165aee4b002619a3cfa7eeaeac989a9eb41edf364e/pyflakes-2.5.0-py2.py3-none-any.whl", hash = "sha256:4579f67d887f804e67edb544428f264b7b24f435b263c4614f384135cea553d2"},
+]
+"pygments 2.13.0" = [
+    {url = "https://files.pythonhosted.org/packages/4f/82/672cd382e5b39ab1cd422a672382f08a1fb3d08d9e0c0f3707f33a52063b/Pygments-2.13.0-py3-none-any.whl", hash = "sha256:f643f331ab57ba3c9d89212ee4a2dabc6e94f117cf4eefde99a0574720d14c42"},
+    {url = "https://files.pythonhosted.org/packages/e0/ef/5905cd3642f2337d44143529c941cc3a02e5af16f0f65f81cbef7af452bb/Pygments-2.13.0.tar.gz", hash = "sha256:56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"},
+]
+"rich 12.5.1" = [
+    {url = "https://files.pythonhosted.org/packages/bb/2d/c902484141330ded63c6c40d66a9725f8da5e818770f67241cf429eef825/rich-12.5.1.tar.gz", hash = "sha256:63a5c5ce3673d3d5fbbf23cd87e11ab84b6b451436f1b7f19ec54b6bc36ed7ca"},
+    {url = "https://files.pythonhosted.org/packages/f6/39/4cb526e0d505464376e3c47a812df6e6638363ebe66e6a63618831fe47ad/rich-12.5.1-py3-none-any.whl", hash = "sha256:2eb4e6894cde1e017976d2975ac210ef515d7548bc595ba20e195fb9628acdeb"},
+]
+"richuru 0.1.1" = [
+    {url = "https://files.pythonhosted.org/packages/97/75/2c59747e6a68e7e1f3df65b1133c03b27fd889c6e975a8539570bf5a9b68/richuru-0.1.1-py3-none-any.whl", hash = "sha256:e73d43913a372d741ff61106001b5e6adfa24c6d0665dd390328a33e34cd210d"},
+    {url = "https://files.pythonhosted.org/packages/ce/7c/c9d4c0b541c9c6ba7d1898fb1886aad5a0d5dea43237a3154a9143d511b9/richuru-0.1.1.tar.gz", hash = "sha256:815816f3a0142b67c53bd424fcced0821aa1104b5386301cff47fc7bbb6d90ea"},
 ]
 "statv 0.3.2" = [
     {url = "https://files.pythonhosted.org/packages/17/94/90af52fbb882f7d5a86f75b8f151fabb3540a01b592d5c12646b55712266/statv-0.3.2-py3-none-any.whl", hash = "sha256:32e430b21ab6a62695c67ab6cae3dba6e01e9c3fdbc9344e3236ad7a1f51d0c7"},

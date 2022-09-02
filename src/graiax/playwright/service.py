@@ -6,8 +6,8 @@ from playwright._impl._api_structures import ProxySettings
 from playwright.async_api import Browser, Playwright, async_playwright
 from typing_extensions import ParamSpec
 
+from .installer import install_playwright
 from .interface import PlaywrightBrowser, PlaywrightBrowserImpl
-from .utils import install_playwright
 
 P = ParamSpec("P")
 
@@ -80,7 +80,7 @@ class PlaywrightService(Service):
         return {"preparing", "cleanup"}
 
     async def launch(self, _):
-        await install_playwright(self.playwright_download_host)
+        await install_playwright(self.playwright_download_host, self.browser_type)
         playwright_mgr = async_playwright()
 
         async with self.stage("preparing"):

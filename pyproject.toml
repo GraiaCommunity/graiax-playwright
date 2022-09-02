@@ -11,6 +11,7 @@ dependencies = [
     "loguru>=0.6.0,<1.0.0",
     "playwright>=1.25.2,<2.0.0",
     "launart>=0.6.1,<0.7.0",
+    "typing-extensions>=4.3.0",
 ]
 keywords = ["graia", "launart", "playwright"]
 requires-python = ">=3.8"
@@ -33,6 +34,7 @@ dev = [
     "flake8>=5.0.4",
     "black>=22.8.0",
     "isort>=5.10.1",
+    "richuru>=0.1.1",
 ]
 
 [tool.pdm.build]
