@@ -88,7 +88,7 @@ summary = "Experimental type system extensions for programs checked with the myp
 
 [[package]]
 name = "pathspec"
-version = "0.10.0"
+version = "0.10.1"
 requires_python = ">=3.7"
 summary = "Utility library for gitignore style pattern matching of file paths."
 
@@ -307,9 +307,9 @@ content_hash = "sha256:56b41745ffa29bfb7739814fbae1b195a0e799ca06366828ddbc0ed35
     {url = "https://files.pythonhosted.org/packages/5c/eb/975c7c080f3223a5cdaff09612f3a5221e4ba534f7039db34c35d95fa6a5/mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
     {url = "https://files.pythonhosted.org/packages/63/60/0582ce2eaced55f65a4406fc97beba256de4b7a95a0034c6576458c6519f/mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
-"pathspec 0.10.0" = [
-    {url = "https://files.pythonhosted.org/packages/03/45/41884de3da7c1012c729fc6fdad25d6b7906c69f5aaf4b23238ac8acfced/pathspec-0.10.0.tar.gz", hash = "sha256:01eecd304ba0e6eeed188ae5fa568e99ef10265af7fd9ab737d6412b4ee0ab85"},
-    {url = "https://files.pythonhosted.org/packages/3c/52/8559662da5afa79eb439c24d5e4e9752504665c123efbf0c825f8c996ee5/pathspec-0.10.0-py3-none-any.whl", hash = "sha256:aefa80ac32d5bf1f96139dca67cefb69a431beff4e6bf1168468f37d7ab87015"},
+"pathspec 0.10.1" = [
+    {url = "https://files.pythonhosted.org/packages/24/9f/a9ae1e6efa11992dba2c4727d94602bd2f6ee5f0dedc29ee2d5d572c20f7/pathspec-0.10.1.tar.gz", hash = "sha256:7ace6161b621d31e7902eb6b5ae148d12cfd23f4a249b9ffb6b9fee12084323d"},
+    {url = "https://files.pythonhosted.org/packages/63/82/2179fdc39bc1bb43296f638ae1dfe2581ec2617b4e87c28b0d23d44b997f/pathspec-0.10.1-py3-none-any.whl", hash = "sha256:46846318467efc4556ccfd27816e004270a9eeeeb4d062ce5e6fc7a87c573f93"},
 ]
 "platformdirs 2.5.2" = [
     {url = "https://files.pythonhosted.org/packages/ed/22/967181c94c3a4063fe64e15331b4cb366bdd7dfbf46fcb8ad89650026fec/platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
