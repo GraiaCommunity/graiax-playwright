@@ -59,7 +59,7 @@ class PlaywrightService(Service):
 
         def __init__(
             self,
-            browser_type: Literal["chromium", "firefox", "webkit"],
+            browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
             playwright_download_host: Optional[str] = None,
             **kwargs,
         ) -> None:

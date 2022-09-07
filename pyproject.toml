@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.1.1"
+version = "0.1.2"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     {name = "BlueGlassBlock", email = "blueglassblock@outlook.com"},
@@ -13,7 +13,7 @@ dependencies = [
     "launart>=0.6.1,<0.7.0",
     "typing-extensions>=4.3.0",
 ]
-keywords = ["graia", "launart", "playwright"]
+keywords = ["graia", "graiax", "launart", "playwright"]
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
