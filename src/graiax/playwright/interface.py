@@ -22,13 +22,48 @@ from playwright._impl._api_structures import (
     StorageState,
     ViewportSize,
 )
-from playwright.async_api import Browser, Page
-from typing_extensions import Unpack
-
-from graiax.playwright.pager import ContextualPage, Parameters, RegularPage
+from playwright.async_api import Browser, BrowserContext, Page
+from typing_extensions import TypedDict, Unpack
 
 if TYPE_CHECKING:
     from .service import PlaywrightService
+
+
+class Parameters(TypedDict, total=False):
+    viewport: Optional[ViewportSize]
+    screen: Optional[ViewportSize]
+    no_viewport: Optional[bool]
+    ignore_https_errors: Optional[bool]
+    java_script_enabled: Optional[bool]
+    bypass_csp: Optional[bool]
+    user_agent: Optional[str]
+    locale: Optional[str]
+    timezone_id: Optional[str]
+    geolocation: Optional[Geolocation]
+    permissions: Optional[List[str]]
+    extra_http_headers: Optional[Dict[str, str]]
+    offline: Optional[bool]
+    http_credentials: Optional[HttpCredentials]
+    device_scale_factor: Optional[float]
+    is_mobile: Optional[bool]
+    has_touch: Optional[bool]
+    color_scheme: Optional[Literal["dark", "light", "no-preference"]]
+    forced_colors: Optional[Literal["active", "none"]]
+    reduced_motion: Optional[Literal["no-preference", "reduce"]]
+    accept_downloads: Optional[bool]
+    default_browser_type: Optional[str]
+    proxy: Optional[ProxySettings]
+    record_har_path: Optional[Union[str, Path]]
+    record_har_omit_content: Optional[bool]
+    record_video_dir: Optional[Union[str, Path]]
+    record_video_size: Optional[ViewportSize]
+    storage_state: Optional[Union[StorageState, str, Path]]
+    base_url: Optional[str]
+    strict_selectors: Optional[bool]
+    service_workers: Optional[Literal["allow", "block"]]
+    record_har_url_filter: Optional[Union[str, Pattern[str]]]
+    record_har_mode: Optional[Literal["full", "minimal"]]
+    record_har_content: Optional[Literal["attach", "embed", "omit"]]
 
 
 class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
@@ -42,12 +77,11 @@ class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
     @asynccontextmanager
     async def page(
         self,
-        *,
-        context: bool = False,
         **kwargs: Unpack[Parameters],
     ) -> AsyncGenerator[Page, None]:
-        async with (ContextualPage if context else RegularPage)(self.browser, **kwargs) as page:
-            yield page
+        page = await self.browser.new_page(**kwargs)
+        yield page
+        await page.close()
 
     if not TYPE_CHECKING:
 
@@ -56,9 +90,6 @@ class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
 
 
 class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
-    service: PlaywrightService
-    browser: Browser
-
     @asynccontextmanager
     async def page(
         self,
@@ -117,7 +148,33 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         ...
 
 
+class PlaywrightContextImpl(ExportInterface["PlaywrightService"]):
+    service: PlaywrightService
+    context: BrowserContext
+
+    def __init__(self, service: PlaywrightService, browser: BrowserContext):
+        self.service = service
+        self.context = browser
+
+    @asynccontextmanager
+    async def page(self) -> AsyncGenerator[Page, None]:
+        page = await self.context.new_page()
+        yield page
+        await page.close()
+
+    if not TYPE_CHECKING:
+
+        def __getattr__(self, name: str) -> Any:
+            return self.browser.__getattribute__(name)
+
+
+class PlaywrightContextStub(PlaywrightContextImpl, BrowserContext):
+    ...
+
+
 if TYPE_CHECKING:
     PlaywrightBrowser = PlaywrightBrowserStub
+    PlaywrightContext = PlaywrightContextStub
 else:
     PlaywrightBrowser = PlaywrightBrowserImpl
+    PlaywrightContext = PlaywrightContextImpl

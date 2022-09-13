@@ -1,13 +1,23 @@
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Dict, List, Literal, Optional, Union
+from typing import Any, Dict, List, Literal, Optional, Pattern, Type, Union, overload
 
 from launart import Service
-from playwright._impl._api_structures import ProxySettings
-from playwright.async_api import Browser, Playwright, async_playwright
+from playwright._impl._api_structures import (
+    Geolocation,
+    HttpCredentials,
+    ProxySettings,
+    ViewportSize,
+)
+from playwright.async_api import Browser, BrowserContext, Playwright, async_playwright
 from typing_extensions import ParamSpec
 
 from .installer import install_playwright
-from .interface import PlaywrightBrowser, PlaywrightBrowserImpl
+from .interface import (
+    PlaywrightBrowser,
+    PlaywrightBrowserImpl,
+    PlaywrightContext,
+    PlaywrightContextImpl,
+)
 
 P = ParamSpec("P")
 
@@ -21,55 +31,118 @@ class PlaywrightService(Service):
     """
 
     id = "web.render/playwright"
-    supported_interface_types = {PlaywrightBrowser}
+    supported_interface_types = {PlaywrightBrowser, PlaywrightContext}
     playwright: Playwright
-    browser: Browser
-    browser_type: str
+    browser: Union[Browser, None]
+    context: BrowserContext
     launch_config: Dict[str, Any]
     playwright_download_host: Optional[str]
 
-    if TYPE_CHECKING:
+    @overload
+    def __init__(
+        self,
+        browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        playwright_download_host: Optional[str] = None,
+        *,
+        user_data_dir: None = None,
+        executable_path: Optional[Union[str, Path]] = None,
+        channel: Optional[str] = None,
+        args: Optional[List[str]] = None,
+        ignore_default_args: Optional[Union[bool, List[str]]] = None,
+        handle_sigint: Optional[bool] = None,
+        handle_sigterm: Optional[bool] = None,
+        handle_sighup: Optional[bool] = None,
+        timeout: Optional[float] = None,
+        env: Optional[Dict[str, Union[str, float, bool]]] = None,
+        headless: Optional[bool] = None,
+        devtools: Optional[bool] = None,
+        proxy: Optional[ProxySettings] = None,
+        downloads_path: Optional[Union[str, Path]] = None,
+        slow_mo: Optional[float] = None,
+        traces_dir: Optional[Union[str, Path]] = None,
+        chromium_sandbox: Optional[bool] = None,
+        firefox_user_prefs: Optional[Dict[str, Union[str, float, bool]]] = None,
+    ):
+        ...
 
-        def __init__(
-            self,
-            browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
-            playwright_download_host: Optional[str] = None,
-            *,
-            executable_path: Optional[Union[str, Path]] = None,
-            channel: Optional[str] = None,
-            args: Optional[List[str]] = None,
-            ignore_default_args: Optional[Union[bool, List[str]]] = None,
-            handle_sigint: Optional[bool] = None,
-            handle_sigterm: Optional[bool] = None,
-            handle_sighup: Optional[bool] = None,
-            timeout: Optional[float] = None,
-            env: Optional[Dict[str, Union[str, float, bool]]] = None,
-            headless: Optional[bool] = None,
-            devtools: Optional[bool] = None,
-            proxy: Optional[ProxySettings] = None,
-            downloads_path: Optional[Union[str, Path]] = None,
-            slow_mo: Optional[float] = None,
-            traces_dir: Optional[Union[str, Path]] = None,
-            chromium_sandbox: Optional[bool] = None,
-            firefox_user_prefs: Optional[Dict[str, Union[str, float, bool]]] = None,
-        ):
-            ...
+    @overload
+    def __init__(
+        self,
+        browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        playwright_download_host: Optional[str] = None,
+        *,
+        user_data_dir: Union[str, Path],
+        channel: Optional[str] = None,
+        executable_path: Optional[Union[str, Path]] = None,
+        args: Optional[List[str]] = None,
+        ignore_default_args: Optional[Union[bool, List[str]]] = None,
+        handle_sigint: Optional[bool] = None,
+        handle_sigterm: Optional[bool] = None,
+        handle_sighup: Optional[bool] = None,
+        timeout: Optional[float] = None,
+        env: Optional[Dict[str, Union[str, float, bool]]] = None,
+        headless: Optional[bool] = None,
+        devtools: Optional[bool] = None,
+        proxy: Optional[ProxySettings] = None,
+        downloads_path: Optional[Union[str, Path]] = None,
+        slow_mo: Optional[float] = None,
+        viewport: Optional[ViewportSize] = None,
+        screen: Optional[ViewportSize] = None,
+        no_viewport: Optional[bool] = None,
+        ignore_https_errors: Optional[bool] = None,
+        java_script_enabled: Optional[bool] = None,
+        bypass_csp: Optional[bool] = None,
+        user_agent: Optional[str] = None,
+        locale: Optional[str] = None,
+        timezone_id: Optional[str] = None,
+        geolocation: Optional[Geolocation] = None,
+        permissions: Optional[List[str]] = None,
+        extra_http_headers: Optional[Dict[str, str]] = None,
+        offline: Optional[bool] = None,
+        http_credentials: Optional[HttpCredentials] = None,
+        device_scale_factor: Optional[float] = None,
+        is_mobile: Optional[bool] = None,
+        has_touch: Optional[bool] = None,
+        color_scheme: Optional[Literal["dark", "light", "no-preference"]] = None,
+        reduced_motion: Optional[Literal["no-preference", "reduce"]] = None,
+        forced_colors: Optional[Literal["active", "none"]] = None,
+        accept_downloads: Optional[bool] = None,
+        traces_dir: Optional[Union[str, Path]] = None,
+        chromium_sandbox: Optional[bool] = None,
+        record_har_path: Optional[Union[str, Path]] = None,
+        record_har_omit_content: Optional[bool] = None,
+        record_video_dir: Optional[Union[str, Path]] = None,
+        record_video_size: Optional[ViewportSize] = None,
+        base_url: Optional[str] = None,
+        strict_selectors: Optional[bool] = None,
+        service_workers: Optional[Literal["allow", "block"]] = None,
+        record_har_url_filter: Optional[Union[str, Pattern[str]]] = None,
+        record_har_mode: Optional[Literal["full", "minimal"]] = None,
+        record_har_content: Optional[Literal["attach", "embed", "omit"]] = None,
+    ):
+        ...
 
-    else:
+    def __init__(
+        self,
+        browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        playwright_download_host: Optional[str] = None,
+        **kwargs,
+    ) -> None:
+        self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
+        self.launch_config = kwargs
+        self.playwright_download_host = playwright_download_host
+        self.browser = None
+        super().__init__()
 
-        def __init__(
-            self,
-            browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
-            playwright_download_host: Optional[str] = None,
-            **kwargs,
-        ) -> None:
-            self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
-            self.launch_config = kwargs
-            self.playwright_download_host = playwright_download_host
-            super().__init__()
-
-    def get_interface(self, _):
-        return PlaywrightBrowserImpl(self, self.browser)
+    def get_interface(self, typ: Union[Type[PlaywrightBrowser], Type[PlaywrightContext]]):
+        if typ is PlaywrightBrowser:
+            if self.browser:
+                return PlaywrightBrowserImpl(self, self.browser)
+            raise RuntimeError(
+                "Playwright service is launched by using a persistent context. Fetching browser is not supported."
+            )
+        elif typ is PlaywrightContext:
+            return PlaywrightContextImpl(self, self.context)
 
     @property
     def required(self):
@@ -90,7 +163,12 @@ class PlaywrightService(Service):
                 "firefox": self.playwright.firefox,
                 "webkit": self.playwright.webkit,
             }[self.browser_type]
-            self.browser = await browser_type.launch(**self.launch_config)
+            if "user_data_dir" not in self.launch_config:
+                self.browser = await browser_type.launch(**self.launch_config)
+                self.context = await self.browser.new_context()
+            else:
+                self.context = await browser_type.launch_persistent_context(**self.launch_config)
 
         async with self.stage("cleanup"):
+            await self.context.close()
             await playwright_mgr.__aexit__()
