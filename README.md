@@ -38,7 +38,7 @@ from graiax.playwright import PlaywrightService
 
 app = Ariadne(...)
 app.launch_manager.add_service(PlaywrightService("chromium")) # 默认值为 chromium
-
+app.launch_manager.add_service(PlaywrightService(user_data_dir="./data")) # 换用 Persistent Context
 ...
 
 Ariadne.launch_blocking()
@@ -52,13 +52,16 @@ from graia.ariadne.util.saya import listen
 from graiax.playwright import PlaywrightBrowser
 
 
+# 此代码仅在不使用 Persistent Context 时可用.
+# 使用 Persistent Context 请使用 `app.launch_manager.get_interface(PlaywrightContext)`
+# 获得的对象与 playwright.async_api.BrowserContext 兼容
+
 @listen(...)
 async def function(app: Ariadne):
     browser = app.launch_manager.get_interface(PlaywrightBrowser)
     # 此处的 Browser 之用法与 playwright.async_api.Browser 无异，但要注意的是下方代码的返回值为 False。
     # `isinstance(browser, playwright.async_api.Browser)`
     async with browser.page( # 此为启用了自动上下文管理的 API.
-        context=True, # 新建 Browser Context, 默认为 False.
         viewport={"width": 800, "height": 10},
         device_scale_factor=1.5,
     ) as page:
