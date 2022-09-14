@@ -170,5 +170,5 @@ class PlaywrightService(Service):
                 self.context = await browser_type.launch_persistent_context(**self.launch_config)
 
         async with self.stage("cleanup"):
-            await self.context.close()
+            # await self.context.close()  # 这里会卡住
             await playwright_mgr.__aexit__()
