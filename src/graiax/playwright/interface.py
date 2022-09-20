@@ -165,7 +165,7 @@ class PlaywrightContextImpl(ExportInterface["PlaywrightService"]):
     if not TYPE_CHECKING:
 
         def __getattr__(self, name: str) -> Any:
-            return self.browser.__getattribute__(name)
+            return self.context.__getattribute__(name)
 
 
 class PlaywrightContextStub(PlaywrightContextImpl, BrowserContext):
