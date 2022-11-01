@@ -8,6 +8,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![License](https://img.shields.io/github/license/GraiaCommunity/graiax-playwright)](https://github.com/GraiaCommunity/graiax-playwright/blob/master/LICENSE)
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
+[![PyPI](https://img.shields.io/pypi/v/graiax-playwright)](https://img.shields.io/pypi/v/graiax-playwright)
 
 </div>
 
