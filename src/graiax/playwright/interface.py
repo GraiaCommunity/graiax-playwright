@@ -133,7 +133,7 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         """获得一个浏览器页面
 
         Args:
-            context: bool, 是否使用 Browser Context，详见 <https://playwright.dev/python/docs/browser-contexts#browser-context>
+            context (bool): 是否使用 Browser Context，详见 <https://playwright.dev/python/docs/browser-contexts#browser-context>
 
         Usage:
             ```python
