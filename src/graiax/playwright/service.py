@@ -26,7 +26,10 @@ class PlaywrightService(Service):
     """用于 launart 的浏览器服务
 
     Args:
-        browser_type(Literal["chromium", "firefox", "webkit"]): 你要使用的浏览器，默认为 Chromium
+        browser_type (Literal["chromium", "firefox", "webkit"]): 你要使用的浏览器，默认为 Chromium
+        auto_download_browser (bool): 是否在启动时自动下载 Playwright 所使用的浏览器或检查其更新，若你需要使用
+            本地计算机上已有的 Chromium 浏览器，则可以设置为 False
+        playwright_download_host (Optional[str]): 如需自动下载浏览器或检查更新，此处可以指定下载/检查更新的地址
         **kwargs: 参见 <https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch>
     """
 
@@ -36,12 +39,14 @@ class PlaywrightService(Service):
     browser: Union[Browser, None]
     context: BrowserContext
     launch_config: Dict[str, Any]
+    auto_download_browser: bool
     playwright_download_host: Optional[str]
 
     @overload
     def __init__(
         self,
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
         *,
         user_data_dir: None = None,
@@ -69,6 +74,7 @@ class PlaywrightService(Service):
     def __init__(
         self,
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
         *,
         user_data_dir: Union[str, Path],
@@ -125,11 +131,13 @@ class PlaywrightService(Service):
     def __init__(
         self,
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
+        auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
         **kwargs,
     ) -> None:
         self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
         self.launch_config = kwargs
+        self.auto_download_browser = auto_download_browser
         self.playwright_download_host = playwright_download_host
         self.browser = None
         super().__init__()
@@ -153,7 +161,9 @@ class PlaywrightService(Service):
         return {"preparing", "cleanup"}
 
     async def launch(self, _):
-        await install_playwright(self.playwright_download_host, self.browser_type)
+        if self.auto_download_browser:
+            await install_playwright(self.playwright_download_host, self.browser_type)
+
         playwright_mgr = async_playwright()
 
         async with self.stage("preparing"):
