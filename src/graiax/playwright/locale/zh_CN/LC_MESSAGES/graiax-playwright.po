@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: graiax-playwright 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-19 12:54+0800\n"
+"POT-Creation-Date: 2023-03-19 14:49+0800\n"
 "PO-Revision-Date: 2023-03-19 01:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -19,27 +19,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-#: src/graiax/playwright/installer.py:19
+#: src/graiax/playwright/installer.py:28
+msgid ""
+"Start download Playwright for {browser_type} with dependencies, may "
+"require administrator privileges from you."
+msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}，可能会向你请求[magenta]管理员权限[/]"
+
+#: src/graiax/playwright/installer.py:36
+msgid ""
+"Start download Playwright for {browser_type} with dependencies, may "
+"require you to access sudo."
+msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}，可能会向你请求访问 [magenta]sudo[/]"
+
+#: src/graiax/playwright/installer.py:42
 msgid "Start download Playwright for {browser_type}."
 msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}。"
 
-#: src/graiax/playwright/installer.py:38
+#: src/graiax/playwright/installer.py:61
 msgid "Downloaded [cyan]{file}[/] to [magenta]{path}[/]"
 msgstr "已下载 [cyan]{file}[/] 到 [magenta]{path}[/]"
 
-#: src/graiax/playwright/installer.py:42
+#: src/graiax/playwright/installer.py:65
 msgid "Download Failed:\n"
 msgstr "下载失败：\n"
 
-#: src/graiax/playwright/installer.py:46
+#: src/graiax/playwright/installer.py:69
 msgid "Failed to download Playwright for {browser_type}."
 msgstr "无法下载所选的 Playwright 浏览器：{browser_type}。"
 
-#: src/graiax/playwright/installer.py:47
+#: src/graiax/playwright/installer.py:70
 msgid "Please see: [magenta]https://playwright.dev/python/docs/intro[/]"
 msgstr "点击右侧链接查看更多: [magenta]https://playwright.dev/python/docs/intro[/]"
 
-#: src/graiax/playwright/installer.py:50
+#: src/graiax/playwright/installer.py:73
 msgid ""
 "Run [magenta]poetry run playwright install[/] or [magenta]pdm run "
 "playwright install[/] to install Playwright manually."
@@ -47,14 +59,27 @@ msgstr ""
 "运行 [magenta]poetry run playwright install[/] 或 [magenta]pdm run "
 "playwright install[/] 来手动安装 Playwright。"
 
-#: src/graiax/playwright/installer.py:56
+#: src/graiax/playwright/installer.py:79
 msgid "Playwright for {browser_type} is installed."
 msgstr "基于 {browser_type} 的 Playwright 已安装。"
 
-#: src/graiax/playwright/service.py:151
+#: src/graiax/playwright/service.py:159
 msgid ""
-"Playwright service is launched by using a persistent context. "
-"Fetching browser is not supported."
+"Playwright service is launched by using a persistent context. Fetching "
+"browser is not supported."
+msgstr "Playwright 服务是通过使用持久上下文（Persistent Context）的方式来启动的。 不支持获取 Browser 实例。"
+
+#: src/graiax/playwright/service.py:198
+msgid ""
+"Unable to launch Playwright for {browser_type}, please check the log "
+"output for the reason of failure. It is possible that some system "
+"dependencies are missing. You can set [magenta]`install_with_deps`[/] to "
+"[magenta]`True`[/] to install dependencies when download browser."
 msgstr ""
-"Playwright 服务是通过使用持久上下文（Persistent Context）的方式来启动的。 "
-"不支持获取 Browser 实例。"
+"无法启动基于 {browser_type} 的 Playwright，请检查日志输出以获取失败原因。有可能是缺少一些系统依赖，你可以将 "
+"[magenta]`install_with_deps`[/] 设置为 [magenta]`True`[/] 以在下载浏览器时一同安装依赖"
+
+#: src/graiax/playwright/service.py:208
+msgid "Playwright for {browser_type} is started."
+msgstr "基于 {browser_type} 的 Playwright 已启动。"
+

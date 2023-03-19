@@ -4,19 +4,42 @@ from typing import Optional
 
 from playwright._impl._driver import compute_driver_executable, get_driver_env
 
-from .i18n import N_
+from .i18n import N_, WINDOWS
 from .utils import Progress, log
 
 download_complete = re.compile("(?P<file>.*) downloaded to (?P<path>.*)")
 percent_pat = re.compile("(\\d+)%")
 
 
-async def install_playwright(download_host: Optional[str] = None, browser_type: str = "chromium"):
-    command = [str(compute_driver_executable()), "install", browser_type]
+async def install_playwright(
+    download_host: Optional[str] = None,
+    browser_type: str = "chromium",
+    install_with_deps: bool = False,
+):
     env = get_driver_env()
     if download_host:
         env["PLAYWRIGHT_DOWNLOAD_HOST"] = download_host
-    log("info", N_("Start download Playwright for {browser_type}.").format(browser_type=browser_type))
+
+    if install_with_deps:
+        command = [str(compute_driver_executable()), "install", "--with-deps", browser_type]
+        if WINDOWS:
+            log(
+                "info",
+                N_(
+                    "Start download Playwright for {browser_type} with dependencies, "
+                    "may require administrator privileges from you."
+                ).format(browser_type=browser_type),
+            )
+        else:
+            log(
+                "info",
+                N_(
+                    "Start download Playwright for {browser_type} with dependencies, may require you to access sudo."
+                ).format(browser_type=browser_type),
+            )
+    else:
+        command = [str(compute_driver_executable()), "install", browser_type]
+        log("info", N_("Start download Playwright for {browser_type}.").format(browser_type=browser_type))
 
     shell = await asyncio.create_subprocess_exec(*command, stdout=asyncio.subprocess.PIPE, env=env)
     returncode = None

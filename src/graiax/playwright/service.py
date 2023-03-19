@@ -8,7 +8,9 @@ from playwright._impl._api_structures import (
     ProxySettings,
     ViewportSize,
 )
-from playwright.async_api import Browser, BrowserContext, Playwright, async_playwright
+from playwright.async_api import Browser, BrowserContext
+from playwright.async_api import Error as PWError
+from playwright.async_api import Playwright, async_playwright
 from typing_extensions import ParamSpec
 
 from .i18n import N_
@@ -19,6 +21,7 @@ from .interface import (
     PlaywrightContext,
     PlaywrightContextImpl,
 )
+from .utils import log
 
 P = ParamSpec("P")
 
@@ -31,6 +34,7 @@ class PlaywrightService(Service):
         auto_download_browser (bool): 是否在启动时自动下载 Playwright 所使用的浏览器或检查其更新，若你需要使用
             本地计算机上已有的 Chromium 浏览器，则可以设置为 False
         playwright_download_host (Optional[str]): 如需自动下载浏览器或检查更新，此处可以指定下载/检查更新的地址
+        install_with_deps (bool):是否在下载安装 Playwright 所使用的浏览器时一同安装缺失的系统依赖，可能需要访问 sudo 或管理员权限
         **kwargs: 参见 <https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch>
     """
 
@@ -49,6 +53,7 @@ class PlaywrightService(Service):
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
         auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
+        install_with_deps: bool = False,
         *,
         user_data_dir: None = None,
         executable_path: Optional[Union[str, Path]] = None,
@@ -77,6 +82,7 @@ class PlaywrightService(Service):
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
         auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
+        install_with_deps: bool = False,
         *,
         user_data_dir: Union[str, Path],
         channel: Optional[str] = None,
@@ -134,12 +140,14 @@ class PlaywrightService(Service):
         browser_type: Literal["chromium", "firefox", "webkit"] = "chromium",
         auto_download_browser: bool = True,
         playwright_download_host: Optional[str] = None,
+        install_with_deps: bool = False,
         **kwargs,
     ) -> None:
         self.browser_type: Literal["chromium", "firefox", "webkit"] = browser_type
         self.launch_config = kwargs
         self.auto_download_browser = auto_download_browser
         self.playwright_download_host = playwright_download_host
+        self.install_with_deps = install_with_deps
         self.browser = None
         super().__init__()
 
@@ -163,7 +171,11 @@ class PlaywrightService(Service):
 
     async def launch(self, _):
         if self.auto_download_browser:
-            await install_playwright(self.playwright_download_host, self.browser_type)
+            await install_playwright(
+                self.playwright_download_host,
+                self.browser_type,
+                self.install_with_deps,
+            )
 
         playwright_mgr = async_playwright()
 
@@ -174,11 +186,26 @@ class PlaywrightService(Service):
                 "firefox": self.playwright.firefox,
                 "webkit": self.playwright.webkit,
             }[self.browser_type]
-            if "user_data_dir" not in self.launch_config:
-                self.browser = await browser_type.launch(**self.launch_config)
-                self.context = await self.browser.new_context()
+            try:
+                if "user_data_dir" not in self.launch_config:
+                    self.browser = await browser_type.launch(**self.launch_config)
+                    self.context = await self.browser.new_context()
+                else:
+                    self.context = await browser_type.launch_persistent_context(**self.launch_config)
+            except PWError:
+                log(
+                    "error",
+                    N_(
+                        "Unable to launch Playwright for {browser_type}, "
+                        "please check the log output for the reason of failure. "
+                        "It is possible that some system dependencies are missing. "
+                        "You can set [magenta]`install_with_deps`[/] to [magenta]`True`[/] "
+                        "to install dependencies when download browser."
+                    ).format(browser_type=self.browser_type),
+                )
+                raise
             else:
-                self.context = await browser_type.launch_persistent_context(**self.launch_config)
+                log("success", N_("Playwright for {browser_type} is started.").format(browser_type=self.browser_type))
 
         async with self.stage("cleanup"):
             # await self.context.close()  # 这里会卡住
