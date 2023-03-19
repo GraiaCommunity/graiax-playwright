@@ -25,7 +25,7 @@ msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}
 
 #: src/graiax/playwright/installer.py:37
 msgid "Downloaded [cyan]{file}[/] to [magenta]{path}[/]"
-msgstr "下载 [cyan]{file}[/] 到 [magenta]{path}[/]"
+msgstr "已下载 [cyan]{file}[/] 到 [magenta]{path}[/]"
 
 #: src/graiax/playwright/installer.py:44
 msgid "Failed to download Playwright for {browser_type}."
