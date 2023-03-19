@@ -38,5 +38,4 @@ t = gettext.translation(
     languages=[lang] if (lang := get_locale()) else None,
     fallback=True,
 )
-# t.install("graiax-playwright")
-_ = t.gettext
+N_ = t.gettext

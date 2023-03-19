@@ -39,12 +39,12 @@ dev = [
 ]
 
 [tool.pdm.build]
-package-dir = "src/graiax"  # includes = ["src/graiax"]
+package-dir = "src"  # includes = ["src/graiax"]
 excludes = ["src/graiax/playwright/locale/**/*.po"]
 setup-script = "build.py"
 
 [tool.pdm.scripts]
-extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 src/graiax/playwright/"
+extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 -k N_ src/graiax/playwright/"
 _init = "pybabel init -D graiax-playwright -i messages.pot -d src/graiax/playwright/locale/ -l {args}"
 init = { composite = ["extract", "_init {args}"] }
 _update = "pybabel update -D graiax-playwright -i messages.pot -d src/graiax/playwright/locale/"
