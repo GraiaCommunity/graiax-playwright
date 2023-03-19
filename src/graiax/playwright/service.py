@@ -11,6 +11,7 @@ from playwright._impl._api_structures import (
 from playwright.async_api import Browser, BrowserContext, Playwright, async_playwright
 from typing_extensions import ParamSpec
 
+from .i18n import N_
 from .installer import install_playwright
 from .interface import (
     PlaywrightBrowser,
@@ -147,7 +148,7 @@ class PlaywrightService(Service):
             if self.browser:
                 return PlaywrightBrowserImpl(self, self.browser)
             raise RuntimeError(
-                "Playwright service is launched by using a persistent context. Fetching browser is not supported."
+                N_("Playwright service is launched by using a persistent context. Fetching browser is not supported.")
             )
         elif typ is PlaywrightContext:
             return PlaywrightContextImpl(self, self.context)

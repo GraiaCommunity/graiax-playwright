@@ -39,7 +39,7 @@ async def install_playwright(download_host: Optional[str] = None, browser_type: 
             )
         elif line == "Failed to install browsers\n":
             message = await shell.stdout.read()
-            log("error", "Download Failed:\n" + message.decode("UTF-8"))
+            log("error", N_("Download Failed:\n") + message.decode("UTF-8"))
             returncode = 1
 
     if returncode or shell.returncode:
