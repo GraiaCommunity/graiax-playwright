@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.2.2"
+version = "0.2.3"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
@@ -39,7 +39,7 @@ dev = [
 ]
 
 [tool.pdm.build]
-package-dir = "src"  # includes = ["src/graiax"]
+includes = ["src/graiax"]
 excludes = ["src/graiax/playwright/locale/**/*.po"]
 setup-script = "build.py"
 
