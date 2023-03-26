@@ -191,6 +191,7 @@ class PlaywrightService(Service):
                     self.browser = await browser_type.launch(**self.launch_config)
                     self.context = await self.browser.new_context()
                 else:
+                    log("info", N_("Playwright is currently starting in persistent context mode."))
                     self.context = await browser_type.launch_persistent_context(**self.launch_config)
             except PWError:
                 log(

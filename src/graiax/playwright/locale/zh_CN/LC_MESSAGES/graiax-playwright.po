@@ -67,7 +67,11 @@ msgstr "基于 {browser_type} 的 Playwright 已安装。"
 msgid ""
 "Playwright service is launched by using a persistent context. Fetching "
 "browser is not supported."
-msgstr "Playwright 服务是通过使用持久上下文（Persistent Context）的方式来启动的。 不支持获取 Browser 实例。"
+msgstr "Playwright 服务是通过使用持久上下文（Persistent Context）的方式来启动的。不支持获取 Browser 实例。"
+
+#: src/graiax/playwright/service.py:194
+msgid "Playwright is currently starting in persistent context mode."
+msgstr "Playwright 当前正以持久上下文模式启动。"
 
 #: src/graiax/playwright/service.py:199
 msgid ""
