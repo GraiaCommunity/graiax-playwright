@@ -9,6 +9,7 @@ from .utils import Progress, log
 
 download_complete = re.compile("(?P<file>.*) downloaded to (?P<path>.*)")
 percent_pat = re.compile("(\\d+)%")
+ascii_pat = re.compile("\x1b.*?m")
 
 
 async def install_playwright(
@@ -48,7 +49,7 @@ async def install_playwright(
 
     progress: Optional[Progress] = None
 
-    while line := (await shell.stdout.readline()).decode("UTF-8"):
+    while line := re.sub(ascii_pat, "", (await shell.stdout.readline()).decode("UTF-8")):
         if "Downloading" in line:
             progress = Progress(line[12:-1])
         if percent := percent_pat.findall(line):
