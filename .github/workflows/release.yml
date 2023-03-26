@@ -13,7 +13,9 @@ jobs:
         uses: pdm-project/setup-pdm@main
 
       - name: Build Package
-        run: pdm build
+        run: |
+          pdm run compile
+          pdm build
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
