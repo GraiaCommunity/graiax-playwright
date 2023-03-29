@@ -17,6 +17,15 @@ keywords = ["graia", "graiax", "launart", "playwright"]
 requires-python = ">=3.8.1"
 readme = "README.md"
 license = { text = "MIT" }
+classifiers = [
+    "Typing :: Typed",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
 
 [project.urls]
 repository = "https://github.com/GraiaCommunity/graiax-playwright"
@@ -24,24 +33,25 @@ repository = "https://github.com/GraiaCommunity/graiax-playwright"
 [project.optional-dependencies]
 
 [build-system]
-requires = ["pdm-pep517", "babel"]
-build-backend = "pdm.pep517.api"
+requires = ["pdm-backend", "babel"]
+build-backend = "pdm.backend"
 
 [tool]
 [tool.pdm]
 [tool.pdm.dev-dependencies]
 dev = [
     "babel>=2.12.1",
-    "black>=23.1.0",
+    "black>=23.3.0",
     "flake8>=6.0.0",
     "isort>=5.12.0",
     "richuru>=0.1.1",
 ]
 
 [tool.pdm.build]
+package-dir = "src"
 includes = ["src/graiax"]
 excludes = ["src/graiax/playwright/locale/**/*.po"]
-setup-script = "build.py"
+source_includes = ["src/graiax/playwright/locale/**/*.po"]
 
 [tool.pdm.scripts]
 extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 -k N_ src/graiax/playwright/"
