@@ -2,17 +2,7 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    AsyncGenerator,
-    Dict,
-    List,
-    Literal,
-    Optional,
-    Pattern,
-    Union,
-)
+from typing import TYPE_CHECKING, Any, AsyncGenerator, Literal, Pattern
 
 from launart import ExportInterface
 from playwright._impl._api_structures import (
@@ -30,40 +20,40 @@ if TYPE_CHECKING:
 
 
 class Parameters(TypedDict, total=False):
-    viewport: Optional[ViewportSize]
-    screen: Optional[ViewportSize]
-    no_viewport: Optional[bool]
-    ignore_https_errors: Optional[bool]
-    java_script_enabled: Optional[bool]
-    bypass_csp: Optional[bool]
-    user_agent: Optional[str]
-    locale: Optional[str]
-    timezone_id: Optional[str]
-    geolocation: Optional[Geolocation]
-    permissions: Optional[List[str]]
-    extra_http_headers: Optional[Dict[str, str]]
-    offline: Optional[bool]
-    http_credentials: Optional[HttpCredentials]
-    device_scale_factor: Optional[float]
-    is_mobile: Optional[bool]
-    has_touch: Optional[bool]
-    color_scheme: Optional[Literal["dark", "light", "no-preference"]]
-    forced_colors: Optional[Literal["active", "none"]]
-    reduced_motion: Optional[Literal["no-preference", "reduce"]]
-    accept_downloads: Optional[bool]
-    default_browser_type: Optional[str]
-    proxy: Optional[ProxySettings]
-    record_har_path: Optional[Union[str, Path]]
-    record_har_omit_content: Optional[bool]
-    record_video_dir: Optional[Union[str, Path]]
-    record_video_size: Optional[ViewportSize]
-    storage_state: Optional[Union[StorageState, str, Path]]
-    base_url: Optional[str]
-    strict_selectors: Optional[bool]
-    service_workers: Optional[Literal["allow", "block"]]
-    record_har_url_filter: Optional[Union[str, Pattern[str]]]
-    record_har_mode: Optional[Literal["full", "minimal"]]
-    record_har_content: Optional[Literal["attach", "embed", "omit"]]
+    viewport: ViewportSize | None
+    screen: ViewportSize | None
+    no_viewport: bool | None
+    ignore_https_errors: bool | None
+    java_script_enabled: bool | None
+    bypass_csp: bool | None
+    user_agent: str | None
+    locale: str | None
+    timezone_id: str | None
+    geolocation: Geolocation | None
+    permissions: list[str] | None
+    extra_http_headers: dict[str, str] | None
+    offline: bool | None
+    http_credentials: HttpCredentials | None
+    device_scale_factor: float | None
+    is_mobile: bool | None
+    has_touch: bool | None
+    color_scheme: Literal["dark", "light", "no-preference"] | None
+    forced_colors: Literal["active", "none"] | None
+    reduced_motion: Literal["no-preference", "reduce"] | None
+    accept_downloads: bool | None
+    default_browser_type: str | None
+    proxy: ProxySettings | None
+    record_har_path: str | Path | None
+    record_har_omit_content: bool | None
+    record_video_dir: str | Path | None
+    record_video_size: ViewportSize | None
+    storage_state: StorageState | str | Path | None
+    base_url: str | None
+    strict_selectors: bool | None
+    service_workers: Literal["allow", "block"] | None
+    record_har_url_filter: str | Pattern[str] | None
+    record_har_mode: Literal["full", "minimal"] | None
+    record_har_content: Literal["attach", "embed", "omit"] | None
 
 
 class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
@@ -95,40 +85,40 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         self,
         *,
         context: bool = False,
-        viewport: Optional[ViewportSize] = None,
-        screen: Optional[ViewportSize] = None,
-        no_viewport: Optional[bool] = None,
-        ignore_https_errors: Optional[bool] = None,
-        java_script_enabled: Optional[bool] = None,
-        bypass_csp: Optional[bool] = None,
-        user_agent: Optional[str] = None,
-        locale: Optional[str] = None,
-        timezone_id: Optional[str] = None,
-        geolocation: Optional[Geolocation] = None,
-        permissions: Optional[List[str]] = None,
-        extra_http_headers: Optional[Dict[str, str]] = None,
-        offline: Optional[bool] = None,
-        http_credentials: Optional[HttpCredentials] = None,
-        device_scale_factor: Optional[float] = None,
-        is_mobile: Optional[bool] = None,
-        has_touch: Optional[bool] = None,
-        color_scheme: Optional[Literal["dark", "light", "no-preference"]] = None,
-        forced_colors: Optional[Literal["active", "none"]] = None,
-        reduced_motion: Optional[Literal["no-preference", "reduce"]] = None,
-        accept_downloads: Optional[bool] = None,
-        default_browser_type: Optional[str] = None,
-        proxy: Optional[ProxySettings] = None,
-        record_har_path: Optional[Union[str, Path]] = None,
-        record_har_omit_content: Optional[bool] = None,
-        record_video_dir: Optional[Union[str, Path]] = None,
-        record_video_size: Optional[ViewportSize] = None,
-        storage_state: Optional[Union[StorageState, str, Path]] = None,
-        base_url: Optional[str] = None,
-        strict_selectors: Optional[bool] = None,
-        service_workers: Optional[Literal["allow", "block"]] = None,
-        record_har_url_filter: Optional[Union[str, Pattern[str]]] = None,
-        record_har_mode: Optional[Literal["full", "minimal"]] = None,
-        record_har_content: Optional[Literal["attach", "embed", "omit"]] = None,
+        viewport: ViewportSize | None = None,
+        screen: ViewportSize | None = None,
+        no_viewport: bool | None = None,
+        ignore_https_errors: bool | None = None,
+        java_script_enabled: bool | None = None,
+        bypass_csp: bool | None = None,
+        user_agent: str | None = None,
+        locale: str | None = None,
+        timezone_id: str | None = None,
+        geolocation: Geolocation | None = None,
+        permissions: list[str] | None = None,
+        extra_http_headers: dict[str, str] | None = None,
+        offline: bool | None = None,
+        http_credentials: HttpCredentials | None = None,
+        device_scale_factor: float | None = None,
+        is_mobile: bool | None = None,
+        has_touch: bool | None = None,
+        color_scheme: Literal["dark", "light", "no-preference"] | None = None,
+        forced_colors: Literal["active", "none"] | None = None,
+        reduced_motion: Literal["no-preference", "reduce"] | None = None,
+        accept_downloads: bool | None = None,
+        default_browser_type: str | None = None,
+        proxy: ProxySettings | None = None,
+        record_har_path: str | Path | None = None,
+        record_har_omit_content: bool | None = None,
+        record_video_dir: str | Path | None = None,
+        record_video_size: ViewportSize | None = None,
+        storage_state: StorageState | str | Path | None = None,
+        base_url: str | None = None,
+        strict_selectors: bool | None = None,
+        service_workers: Literal["allow", "block"] | None = None,
+        record_har_url_filter: str | Pattern[str] | None = None,
+        record_har_mode: Literal["full", "minimal"] | None = None,
+        record_har_content: Literal["attach", "embed", "omit"] | None = None,
     ) -> AsyncGenerator[Page, None]:
         """获得一个浏览器页面
 
