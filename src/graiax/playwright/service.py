@@ -34,7 +34,8 @@ class PlaywrightService(Service):
         auto_download_browser (bool): 是否在启动时自动下载 Playwright 所使用的浏览器或检查其更新，若你需要使用
             本地计算机上已有的 Chromium 浏览器，则可以设置为 False
         playwright_download_host (Optional[str]): 如需自动下载浏览器或检查更新，此处可以指定下载/检查更新的地址
-        install_with_deps (bool):是否在下载安装 Playwright 所使用的浏览器时一同安装缺失的系统依赖，可能需要访问 sudo 或管理员权限
+        install_with_deps (bool):是否在下载安装 Playwright 所使用的浏览器时一同安装缺失的系统依赖，可能需要访问
+            sudo 或管理员权限
         **kwargs: 参见 <https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch>
     """
 
