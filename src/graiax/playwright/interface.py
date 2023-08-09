@@ -142,9 +142,9 @@ class PlaywrightContextImpl(ExportInterface["PlaywrightService"]):
     service: PlaywrightService
     context: BrowserContext
 
-    def __init__(self, service: PlaywrightService, browser: BrowserContext):
+    def __init__(self, *, service: PlaywrightService, context: BrowserContext):
         self.service = service
-        self.context = browser
+        self.context = context
 
     @asynccontextmanager
     async def page(self) -> AsyncGenerator[Page, None]:
@@ -159,7 +159,24 @@ class PlaywrightContextImpl(ExportInterface["PlaywrightService"]):
 
 
 class PlaywrightContextStub(PlaywrightContextImpl, BrowserContext):
-    ...
+    @asynccontextmanager
+    async def page(self) -> AsyncGenerator[Page, None]:
+        """获得全局浏览器上下文（Browser Context）
+
+        若使用持久性上下文（Persistent Context）则获得的是持久上下文。
+        若没有使用持久性上下文，则获得的是一个全局通用的（会跟随整个生命周期的）上下文
+
+        Usage:
+            ```python
+            from graiax.playwright import laywrightContext
+
+            context = launart.get_interface(laywrightContext)
+            async with context.page() as page:
+                await page.set_content("Hello World!")
+                img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
+            ```
+        """
+        ...
 
 
 if TYPE_CHECKING:
