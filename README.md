@@ -76,7 +76,7 @@ async def function(app: Ariadne):
 上面配合 Saya 使用的例子展示了创建一个页面的例子，但假如我们需要一个与其他页面**隔离**的新页面（例如 cookie
 等），那么我们可以使用 `browser.page(context=True)` 在创建页面时使用一个新的上下文，如下所示：
 
-> ![NOTE]  
+> [!NOTE]  
 > 该种用法不支持持久性上下文（Persistent Context）
 >
 > 更多信息详见：<https://playwright.dev/python/docs/browser-contexts
