@@ -97,7 +97,7 @@ async def function(app: Ariadne):
 版本起，可以在创建 PlaywrightService 时为全局的 Browser Context 指定 viewport，然后在截图时使用全局
 Browser Context 截图，如下所示：
 
-> ![NOTE]  
+> [!NOTE]  
 > 该种用法不支持持久性上下文（Persistent Context）
 
 **机器人入口文件：**
