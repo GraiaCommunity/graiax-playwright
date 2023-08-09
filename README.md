@@ -79,7 +79,7 @@ async def function(app: Ariadne):
 > [!NOTE]  
 > 该种用法不支持持久性上下文（Persistent Context）
 >
-> 更多信息详见：<https://playwright.dev/python/docs/browser-contexts
+> 更多信息详见：<https://playwright.dev/python/docs/browser-contexts>
 
 ```python
 @listen(...)
