@@ -60,16 +60,21 @@ class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
     service: PlaywrightService
     browser: Browser
 
-    def __init__(self, service: PlaywrightService, browser: Browser):
+    def __init__(self, *, service: PlaywrightService, browser: Browser):
         self.service = service
         self.browser = browser
 
     @asynccontextmanager
     async def page(
         self,
+        *,
+        new_context: bool = False,
         **kwargs: Unpack[Parameters],
     ) -> AsyncGenerator[Page, None]:
-        page = await self.browser.new_page(**kwargs)
+        if new_context:
+            page = await (await self.browser.new_context(**kwargs)).new_page()
+        else:
+            page = await self.browser.new_page(**kwargs)
         yield page
         await page.close()
 
@@ -84,7 +89,7 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
     async def page(
         self,
         *,
-        context: bool = False,
+        new_context: bool = False,
         viewport: ViewportSize | None = None,
         screen: ViewportSize | None = None,
         no_viewport: bool | None = None,
@@ -120,17 +125,18 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         record_har_mode: Literal["full", "minimal"] | None = None,
         record_har_content: Literal["attach", "embed", "omit"] | None = None,
     ) -> AsyncGenerator[Page, None]:
-        """获得一个浏览器页面
+        """获得一个新的浏览器页面（Page）
 
         Args:
-            context (bool): 是否使用 Browser Context，详见 <https://playwright.dev/python/docs/browser-contexts#browser-context>
+            new_context (bool): 是否使用一个新的 Browser Context，详见 <https://playwright.dev/python/docs/browser-contexts>。
+                若想使用全局通用的 Browser Context，请使用 `PlaywrightContext` 接口
 
         Usage:
             ```python
             from graiax.playwright import PlaywrightBrowser
 
             browser = launart.get_interface(PlaywrightBrowser)
-            async with browser.page(context=True, viewport={"width": 800, "height": 10}, device_scale_factor=1.5) as page:
+            async with browser.page(new_context=True, viewport={"width": 800, "height": 10}, device_scale_factor=1.5) as page:
                 await page.set_content("Hello World!")
                 img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
             ```

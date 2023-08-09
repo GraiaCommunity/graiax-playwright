@@ -1,8 +1,9 @@
 import asyncio
 from os import remove
 
-from graiax.playwright import PlaywrightBrowser, PlaywrightContext, PlaywrightService
 from launart import Launart, Launchable
+
+from graiax.playwright import PlaywrightBrowser, PlaywrightContext, PlaywrightService
 
 
 class Test(Launchable):
@@ -19,6 +20,7 @@ class Test(Launchable):
     async def launch(self, manager: Launart):
         async with self.stage("blocking"):
             browser = manager.get_interface(PlaywrightBrowser)
+            async with browser.page(new_context=True) as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
