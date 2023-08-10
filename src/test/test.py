@@ -3,7 +3,7 @@ from os import remove
 
 from launart import Launart, Launchable
 
-from graiax.playwright import PlaywrightBrowser, PlaywrightService
+from graiax.playwright import PlaywrightBrowser, PlaywrightContext, PlaywrightService
 
 
 class Test(Launchable):
@@ -11,7 +11,7 @@ class Test(Launchable):
 
     @property
     def required(self):
-        return {PlaywrightBrowser}
+        return {PlaywrightBrowser, PlaywrightContext}
 
     @property
     def stages(self):
@@ -20,7 +20,17 @@ class Test(Launchable):
     async def launch(self, manager: Launart):
         async with self.stage("blocking"):
             browser = manager.get_interface(PlaywrightBrowser)
-            async with browser.page() as page:
+            async with browser.page(new_context=True) as page:
+                await page.set_content("Hello World!")
+                await page.screenshot(
+                    full_page=True,
+                    type="jpeg",
+                    path="graiax-playwright_test.jpg",
+                )
+            await asyncio.sleep(10)
+            remove("graiax-playwright_test.jpg")
+            context = manager.get_interface(PlaywrightContext)
+            async with context.page() as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
