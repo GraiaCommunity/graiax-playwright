@@ -44,7 +44,7 @@ class PlaywrightService(Service):
         **kwargs: 详见 <https://playwright.dev/python/docs/api/class-browsertype#browser-type-launch>
     """
 
-    id = "web.render/playwright"
+    id = "web.render/graiax.playwright"
     supported_interface_types = {PlaywrightBrowser, PlaywrightContext}
     playwright: Playwright
     browser: Browser | None = None
