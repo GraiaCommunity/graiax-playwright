@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, AsyncGenerator, Literal, Pattern
 
-from launart import ExportInterface
 from playwright._impl._api_structures import (
     Geolocation,
     HttpCredentials,
@@ -56,7 +55,7 @@ class Parameters(TypedDict, total=False):
     record_har_content: Literal["attach", "embed", "omit"] | None
 
 
-class PlaywrightBrowserImpl(ExportInterface["PlaywrightService"]):
+class PlaywrightBrowserImpl:
     service: PlaywrightService
     browser: Browser
 
@@ -144,7 +143,7 @@ class PlaywrightBrowserStub(PlaywrightBrowserImpl, Browser):
         ...
 
 
-class PlaywrightContextImpl(ExportInterface["PlaywrightService"]):
+class PlaywrightContextImpl:
     service: PlaywrightService
     context: BrowserContext
 

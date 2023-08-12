@@ -1,17 +1,18 @@
 import asyncio
 from os import remove
 
-from launart import Launart, Launchable
+from creart import create
+from launart import Launart, Service
 
 from graiax.playwright import PlaywrightBrowser, PlaywrightContext, PlaywrightService
 
 
-class Test(Launchable):
+class Test(Service):
     id = "test"
 
     @property
     def required(self):
-        return {PlaywrightBrowser, PlaywrightContext}
+        return {"web.render/graiax.playwright"}
 
     @property
     def stages(self):
@@ -20,38 +21,38 @@ class Test(Launchable):
     async def launch(self, manager: Launart):
         async with self.stage("blocking"):
             browser = manager.get_interface(PlaywrightBrowser)
+            async with browser.page(viewport={"width": 300, "height": 100}) as page:
+                await page.set_content("Hello World!")
+                await page.screenshot(
+                    full_page=True,
+                    type="jpeg",
+                    path="graiax-playwright_test1.jpg",
+                )
+            browser = manager.get_interface(PlaywrightBrowser)
             async with browser.page(new_context=True) as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
                     type="jpeg",
-                    path="graiax-playwright_test.jpg",
+                    path="graiax-playwright_test2.jpg",
                 )
-            await asyncio.sleep(10)
-            remove("graiax-playwright_test.jpg")
             context = manager.get_interface(PlaywrightContext)
             async with context.page() as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
                     type="jpeg",
-                    path="graiax-playwright_test.jpg",
+                    path="graiax-playwright_test3.jpg",
                 )
             await asyncio.sleep(10)
-            remove("graiax-playwright_test.jpg")
+            remove("graiax-playwright_test1.jpg")
+            remove("graiax-playwright_test2.jpg")
+            remove("graiax-playwright_test3.jpg")
 
 
-loop = asyncio.new_event_loop()
-launart = Launart()
+launart = create(Launart)
 
-launart.add_service(PlaywrightService("chromium"))
-launart.add_launchable(Test())
+launart.add_component(PlaywrightService("chromium", viewport={"width": 800, "height": 10}, device_scale_factor=1.5))
+launart.add_component(Test())
 
 launart.launch_blocking()
-
-launart.status.exiting = True
-if launart.task_group is not None:
-    launart.task_group.stop = True
-    task = launart.task_group.blocking_task
-    if task and not task.done():
-        task.cancel()
