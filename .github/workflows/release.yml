@@ -23,7 +23,7 @@ jobs:
           pdm build
 
       - name: Publish to PyPI
-        if: ${{ github.event.inputs.release == 'true' }}
+        if: ${{ github.event_name == 'push' }} || ${{ github.event.inputs.release == 'true' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_TOKEN }}
