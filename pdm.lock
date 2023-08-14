@@ -6,7 +6,7 @@ groups = ["default", "dev"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:603dd635ea77efae5f8df85ee6626ba5f040e79b0462ab25c8d5aa394ba08ffd"
+content_hash = "sha256:248cf6ad463078f0b96652bbdb5ede8f25ad107fb2e03203521b8dfe846fa1e5"
 
 [[package]]
 name = "babel"

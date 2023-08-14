@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.3.0"
+version = "0.3.1"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
@@ -9,7 +9,7 @@ authors = [
 ]
 dependencies = [
     "launart>=0.8.1",
-    "loguru>=0.7.0",
+    "loguru>=0.6.0",
     "playwright>=1.36.0",
     "typing-extensions>=4.7.1",
 ]
