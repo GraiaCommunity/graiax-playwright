@@ -73,7 +73,7 @@ select = [
     "E",  # pycodestyle
     "F",  # pyflakes
     "UP", # pyupgrade
-    "I",  # isort
+    # "I",  # isort
     # "D",  # pydocstyle
     "ASYNC", # flake8-async
 ]

@@ -15,7 +15,7 @@
 Graiax Playwright 使用 [launart](https://github.com/GraiaProject/launart) 作为启动管理器，
 适用于 [Ariadne](https://github.com/GraiaProject/Ariadne) 及 [Avilla](https://github.com/GraiaProject/Avilla)。
 
-以 Ariadne 为例，通过 GraiaX Playwright 你可以轻松地在 Ariadne 启动的时候同时启动一个
+通过 GraiaX Playwright 你可以轻松地在 Ariadne / Avilla 启动的时候同时启动一个
 Playwright，并在其退出的时候自动关闭 Playwright。
 
 > 需要注意的是，Playwright 将会在运行期间保持后台常驻，  
@@ -29,37 +29,41 @@ Playwright，并在其退出的时候自动关闭 Playwright。
 
 ## 开始使用
 
-以下示例以 Ariadne 为例。
+以下教程以配合 Launart 使用为例。
 
 ### 机器人入口文件
 
 ```python
+from creart import create
+from launart import Launart
 from graia.ariadne.app import Ariadne
 from graiax.playwright import PlaywrightService
 
-app = Ariadne(...)
-app.launch_manager.add_service(PlaywrightService("chromium")) # 默认值为 chromium
-app.launch_manager.add_service(PlaywrightService(user_data_dir="./browser_data"))  # 与上一行二选一，使用 Persistent Context
+launart = create(Launart)
+launart.add_component(PlaywrightService("chromium")) # 默认值为 chromium
+launart.add_component(PlaywrightService("chromium"， user_data_dir="./browser_data"))  # 与上一行二选一，该方式使用 Persistent Context
 ...
 
-Ariadne.launch_blocking()
+launart.launch_blocking()
 ```
 
 ### 配合 Graia Saya 使用
 
 ```python
-from graia.ariadne.app import Ariadne
+from creart import create
+from launart import Launart
 from graia.ariadne.util.saya import listen
 from graiax.playwright import PlaywrightBrowser
 
 # 此处代码为没有使用 Persistent Context 的示例
-# 若使用 Persistent Context 请使用 `context = app.launch_manager.get_interface(PlaywrightContext)`
+# 若使用 Persistent Context 请使用 `context = launart.get_interface(PlaywrightContext)`
 # 该方法获得的对象与 playwright.async_api.BrowserContext 兼容
 
 
 @listen(...)
 async def function(app: Ariadne):
-    browser = app.launch_manager.get_interface(PlaywrightBrowser)
+    launart = create(Launart)
+    browser = launart.get_interface(PlaywrightBrowser)
     # 此处的 browser 之用法与 playwright.async_api.Browser 无异，但要注意的是下方代码的返回值为 False。
     # `isinstance(browser, playwright.async_api.Browser)`
     async with browser.page(  # 此 API 启用了自动上下文管理
@@ -84,7 +88,8 @@ async def function(app: Ariadne):
 ```python
 @listen(...)
 async def function(app: Ariadne):
-    browser = app.launch_manager.get_interface(PlaywrightBrowser)
+    launart = create(Launart)
+    browser = launart.get_interface(PlaywrightBrowser)
     async with browser.page(new_context=True) as page:  # 此 API 启用了自动上下文管理
         await page.set_content("Hello World!")
         img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale="device")
@@ -103,7 +108,7 @@ Browser Context 截图，如下所示：
 **机器人入口文件：**
 
 ```python
-app.launch_manager.add_service(PlaywrightService("chromium"))
+launart.add_service(PlaywrightService("chromium"))
 ```
 
 **Saya 模块中：**
@@ -114,7 +119,8 @@ from graiax.playwright import PlaywrightContext
 
 @listen(...)
 async def function(app: Ariadne):
-    context = app.launch_manager.get_interface(PlaywrightContext)
+    launart = create(Launart)
+    context = launart.get_interface(PlaywrightContext)
     async with context.page() as page:  # 此 API 启用了自动上下文管理
         await page.set_content("Hello World!")
         img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale="device")
