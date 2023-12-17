@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.3.1"
+version = "0.4.0"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
@@ -8,13 +8,12 @@ authors = [
     { name = "Redlnn", email = "w731347477@gmail.com" },
 ]
 dependencies = [
-    "launart>=0.8.1",
-    "loguru>=0.6.0",
-    "playwright>=1.36.0",
-    "typing-extensions>=4.7.1",
+    "launart>=0.8.2",
+    "loguru>=0.7.2",
+    "playwright>=1.40.0",
 ]
 keywords = ["graia", "graiax", "launart", "playwright"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "MIT" }
 classifiers = [
@@ -24,6 +23,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
@@ -37,11 +37,10 @@ build-backend = "pdm.backend"
 [tool.pdm]
 [tool.pdm.dev-dependencies]
 dev = [
-    "babel>=2.12.1",
-    "black>=23.7.0",
+    "babel>=2.14.0",
+    "black>=23.12.0",
     "creart>=0.3.0",
-    "isort>=5.12.0",
-    "richuru>=0.1.1",
+    "isort>=5.13.2",
 ]
 
 [tool.pdm.build]
@@ -60,14 +59,14 @@ compile = "pybabel compile -D graiax-playwright -d src/graiax/playwright/locale/
 
 [tool.black]
 line-length = 120
-target-version = ["py38", "py39", "py310", "py311"]
+target-version = ["py310", "py311", "py312"]
 
 [tool.isort]
 profile = "black"
 
 [tool.ruff]
 line-length = 120
-target-version = "py38"
+target-version = "py310"
 select = [
     # https://beta.ruff.rs/docs/rules
     "E",  # pycodestyle

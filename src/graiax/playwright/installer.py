@@ -1,10 +1,11 @@
 import asyncio
+import os
 import re
-from typing import Optional
+import sys
 
 from playwright._impl._driver import compute_driver_executable, get_driver_env
 
-from .i18n import N_, WINDOWS
+from .i18n import N_
 from .utils import Progress, log
 
 download_complete = re.compile("(?P<file>.*) downloaded to (?P<path>.*)")
@@ -13,7 +14,7 @@ ascii_pat = re.compile("\x1b.*?m")
 
 
 async def install_playwright(
-    download_host: Optional[str] = None,
+    download_host: str | None = None,
     browser_type: str = "chromium",
     install_with_deps: bool = False,
 ):
@@ -23,7 +24,7 @@ async def install_playwright(
 
     if install_with_deps:
         command = [str(compute_driver_executable()), "install", "--with-deps", browser_type]
-        if WINDOWS:
+        if sys.platform.startswith("win") or os.name == "nt":
             log(
                 "info",
                 N_(
@@ -47,7 +48,7 @@ async def install_playwright(
 
     assert shell.stdout
 
-    progress: Optional[Progress] = None
+    progress: Progress | None = None
 
     while line := re.sub(ascii_pat, "", (await shell.stdout.readline()).decode("UTF-8")):
         if "Downloading" in line:
