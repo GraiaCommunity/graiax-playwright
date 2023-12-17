@@ -72,13 +72,17 @@ async def function(app: Ariadne):
 
 ### 高级用法之一
 
-上面配合 Saya 使用的例子展示了创建一个页面的例子，但假如我们需要一个与其他页面**隔离**的新页面（例如 cookie
-等），那么我们可以使用 `browser.page(context=True)` 在创建页面时使用一个新的上下文，如下所示：
+上面配合 Saya 使用的例子展示了创建一个页面的例子，但该页面默认与其他页面互相**隔离**（例如 cookie
+等），假如我们需要一个与其他页面**隔离**的新页面，那么我们可以使用
+`page(use_global_context=False)` 在创建页面时使用一个新的上下文，如下所示：
 
 > [!NOTE]  
-> 该种用法不支持持久性上下文（Persistent Context）
->
 > 该种用法中的新上下文，仍受到 Playwright 启动参数的影响
+>
+> 如果你传入了例如 `viewport` 之类的只有新创建上下文或者新页面才支持的参数时，则会忽略
+> `use_global_context` 参数。此时若 `without_new_context`
+> 为 `True`（默认行为），则将会直接使用浏览器实例创建新页面。
+> 反之则会先创建新上下文再用新的上下文创建新页面，但是结束时新的页面和上下文都会被关闭。
 >
 > 更多信息详见：<https://playwright.dev/python/docs/browser-contexts>
 
@@ -87,7 +91,7 @@ async def function(app: Ariadne):
 async def function(app: Ariadne):
     launart = create(Launart)
     pw_service = launart.get_component(PlaywrightService)
-    async with pw_service.page(new_context=True) as page:  # 此 API 启用了自动上下文管理
+    async with pw_service.page(use_global_context=False) as page:  # 此 API 启用了自动上下文管理
         await page.set_content("Hello World!")
         img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale="device")
     ...
@@ -98,9 +102,6 @@ async def function(app: Ariadne):
 上面配合 Saya 使用的例子展示了为**单个页面**设置 viewport 的功能，自 GraiaX Playwright `v0.3.1`
 版本起，可以在创建 PlaywrightService 时为全局的 Browser Context 指定 viewport，然后在截图时使用全局
 Browser Context 截图，如下所示：
-
-> [!NOTE]  
-> 该种用法不支持持久性上下文（Persistent Context）
 
 **机器人入口文件：**
 
