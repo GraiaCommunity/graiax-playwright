@@ -4,7 +4,7 @@ from os import remove
 from creart import create
 from launart import Launart, Service
 
-from graiax.playwright import PlaywrightBrowser, PlaywrightContext, PlaywrightService
+from graiax.playwright import PlaywrightService
 
 
 class Test(Service):
@@ -20,24 +20,24 @@ class Test(Service):
 
     async def launch(self, manager: Launart):
         async with self.stage("blocking"):
-            browser = manager.get_interface(PlaywrightBrowser)
-            async with browser.page(viewport={"width": 300, "height": 100}) as page:
+            pw_service = manager.get_component(PlaywrightService)
+            async with pw_service.page(without_new_context=True, viewport={"width": 300, "height": 100}) as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
                     type="jpeg",
                     path="graiax-playwright_test1.jpg",
                 )
-            browser = manager.get_interface(PlaywrightBrowser)
-            async with browser.page(new_context=True) as page:
+            pw_service = manager.get_component(PlaywrightService)
+            async with pw_service.page(without_new_context=False) as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,
                     type="jpeg",
                     path="graiax-playwright_test2.jpg",
                 )
-            context = manager.get_interface(PlaywrightContext)
-            async with context.page() as page:
+            pw_service = manager.get_component(PlaywrightService)
+            async with pw_service.page(viewport={"width": 300, "height": 100}) as page:
                 await page.set_content("Hello World!")
                 await page.screenshot(
                     full_page=True,

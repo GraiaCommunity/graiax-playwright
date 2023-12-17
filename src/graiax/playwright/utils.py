@@ -1,4 +1,16 @@
+from pathlib import Path
+from re import Pattern
+from typing import Literal
+
 from loguru import logger
+from playwright._impl._api_structures import (
+    Geolocation,
+    HttpCredentials,
+    ProxySettings,
+    StorageState,
+    ViewportSize,
+)
+from typing_extensions import TypedDict
 
 
 def log(level: str, rich_text: str) -> None:
@@ -88,3 +100,40 @@ browser_context_config_list = [
     "record_har_mode",
     "record_har_content",
 ]
+
+
+class Parameters(TypedDict, total=False):
+    viewport: ViewportSize | None
+    screen: ViewportSize | None
+    no_viewport: bool | None
+    ignore_https_errors: bool | None
+    java_script_enabled: bool | None
+    bypass_csp: bool | None
+    user_agent: str | None
+    locale: str | None
+    timezone_id: str | None
+    geolocation: Geolocation | None
+    permissions: list[str] | None
+    extra_http_headers: dict[str, str] | None
+    offline: bool | None
+    http_credentials: HttpCredentials | None
+    device_scale_factor: float | None
+    is_mobile: bool | None
+    has_touch: bool | None
+    color_scheme: Literal["dark", "light", "no-preference"] | None
+    forced_colors: Literal["active", "none"] | None
+    reduced_motion: Literal["no-preference", "reduce"] | None
+    accept_downloads: bool | None
+    default_browser_type: str | None
+    proxy: ProxySettings | None
+    record_har_path: str | Path | None
+    record_har_omit_content: bool | None
+    record_video_dir: str | Path | None
+    record_video_size: ViewportSize | None
+    storage_state: StorageState | str | Path | None
+    base_url: str | None
+    strict_selectors: bool | None
+    service_workers: Literal["allow", "block"] | None
+    record_har_url_filter: str | Pattern[str] | None
+    record_har_mode: Literal["full", "minimal"] | None
+    record_har_content: Literal["attach", "embed", "omit"] | None
