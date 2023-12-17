@@ -4,10 +4,9 @@ import locale
 import os
 import sys
 from pathlib import Path
-from typing import Optional
 
 
-def _get_win_locale() -> Optional[str]:
+def _get_win_locale() -> str | None:
     try:
         import ctypes
 
@@ -23,7 +22,7 @@ def _get_win_locale() -> Optional[str]:
                     return locale.windows_locale.get(int(lcid, 16))
 
 
-def get_locale() -> Optional[str]:
+def get_locale() -> str | None:
     if sys.platform.startswith("win") or os.name == "nt":
         return _get_win_locale()
 

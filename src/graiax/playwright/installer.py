@@ -14,7 +14,7 @@ ascii_pat = re.compile("\x1b.*?m")
 
 
 async def install_playwright(
-    download_host: Optional[str] = None,
+    download_host: str | None = None,
     browser_type: str = "chromium",
     install_with_deps: bool = False,
 ):
@@ -48,7 +48,7 @@ async def install_playwright(
 
     assert shell.stdout
 
-    progress: Optional[Progress] = None
+    progress: Progress | None = None
 
     while line := re.sub(ascii_pat, "", (await shell.stdout.readline()).decode("UTF-8")):
         if "Downloading" in line:

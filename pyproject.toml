@@ -14,7 +14,7 @@ dependencies = [
     "typing-extensions>=4.7.1",
 ]
 keywords = ["graia", "graiax", "launart", "playwright"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "MIT" }
 classifiers = [
@@ -24,6 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
@@ -60,14 +61,14 @@ compile = "pybabel compile -D graiax-playwright -d src/graiax/playwright/locale/
 
 [tool.black]
 line-length = 120
-target-version = ["py38", "py39", "py310", "py311"]
+target-version = ["py310"]
 
 [tool.isort]
 profile = "black"
 
 [tool.ruff]
 line-length = 120
-target-version = "py38"
+target-version = "py310"
 select = [
     # https://beta.ruff.rs/docs/rules
     "E",  # pycodestyle
