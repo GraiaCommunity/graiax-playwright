@@ -6,8 +6,6 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-WINDOWS = sys.platform.startswith("win") or os.name == "nt"
-
 
 def _get_win_locale() -> Optional[str]:
     try:
@@ -26,7 +24,7 @@ def _get_win_locale() -> Optional[str]:
 
 
 def get_locale() -> Optional[str]:
-    if WINDOWS:
+    if sys.platform.startswith("win") or os.name == "nt":
         return _get_win_locale()
 
     return locale.getlocale(locale.LC_MESSAGES)[0]

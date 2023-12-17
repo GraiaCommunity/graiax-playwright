@@ -1,10 +1,11 @@
 import asyncio
+import os
 import re
-from typing import Optional
+import sys
 
 from playwright._impl._driver import compute_driver_executable, get_driver_env
 
-from .i18n import N_, WINDOWS
+from .i18n import N_
 from .utils import Progress, log
 
 download_complete = re.compile("(?P<file>.*) downloaded to (?P<path>.*)")
@@ -23,7 +24,7 @@ async def install_playwright(
 
     if install_with_deps:
         command = [str(compute_driver_executable()), "install", "--with-deps", browser_type]
-        if WINDOWS:
+        if sys.platform.startswith("win") or os.name == "nt":
             log(
                 "info",
                 N_(
