@@ -36,6 +36,38 @@ class PlaywrightPageInterface(PlaywrightServiceStub):
     def page(
         self,
         *,
+        use_global_context: Literal[True] = True,
+        without_new_context: Literal[True] = True,
+    ) -> AbstractAsyncContextManager[Page]:
+        """
+        获得一个新的浏览器页面（playwright.async_api.Page），并使用全局上下文。
+
+        Args:
+            use_global_context (Literal[True]): 是否使用全局上下文，该选项默认为 True。
+                当你传入新上下文或新页面的参数时，该选项将会被忽略，将不使用全局上下文。
+                当你使用持久化上下文模式启动 Playwright 时，则只能使用全局上下文，也无法传入更多额外参数。
+            without_new_context (Literal[True]): 是否开一个新的上下文。
+                当你使用全局上下文时，该选项无意义且必须为 True。
+
+        Returns:
+            AbstractAsyncContextManager[Page]: 这是一个异步生成器，请参照文档使用。
+
+        Usage:
+            ```python
+            from graiax.playwright import PlaywrightService
+
+            pw_service = manager.get_component(PlaywrightService)
+            async with pw_service.page() as page:
+                await page.set_content("Hello World!")
+                img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
+            ```
+        """
+        ...
+
+    @overload
+    def page(
+        self,
+        *,
         use_global_context: bool = True,
         without_new_context: bool = True,
         viewport: ViewportSize | None = None,
@@ -97,38 +129,6 @@ class PlaywrightPageInterface(PlaywrightServiceStub):
             async with pw_service.page(
                 viewport={"width": 300, "height": 100},
             ) as page:
-                await page.set_content("Hello World!")
-                img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
-            ```
-        """
-        ...
-
-    @overload
-    def page(
-        self,
-        *,
-        use_global_context: Literal[True] = True,
-        without_new_context: Literal[True] = True,
-    ) -> AbstractAsyncContextManager[Page]:
-        """
-        获得一个新的浏览器页面（playwright.async_api.Page），并使用全局上下文。
-
-        Args:
-            use_global_context (Literal[True]): 是否使用全局上下文，该选项默认为 True。
-                当你传入新上下文或新页面的参数时，该选项将会被忽略，将不使用全局上下文。
-                当你使用持久化上下文模式启动 Playwright 时，则只能使用全局上下文，也无法传入更多额外参数。
-            without_new_context (Literal[True]): 是否开一个新的上下文。
-                当你使用全局上下文时，该选项无意义且必须为 True。
-
-        Returns:
-            AbstractAsyncContextManager[Page]: 这是一个异步生成器，请参照文档使用。
-
-        Usage:
-            ```python
-            from graiax.playwright import PlaywrightService
-
-            pw_service = manager.get_component(PlaywrightService)
-            async with pw_service.page() as page:
                 await page.set_content("Hello World!")
                 img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
             ```
@@ -213,10 +213,38 @@ class PlaywrightPageInterface(PlaywrightServiceStub):
 
 class PlaywrightContextInterface(PlaywrightServiceStub):
     @overload
+    def context(self, *, use_global_context: Literal[True] = True) -> AbstractAsyncContextManager[BrowserContext]:
+        """
+        获得一个新的浏览器上下文（playwright.async_api.BrowserContext）。
+
+        Args:
+            use_global_context (Literal[True]): 是否使用全局上下文，该选项默认为 True。
+                当你使用持久化上下文模式启动 Playwright 时，则只能使用全局上下文，也无法传入更多额外参数。
+
+        Returns:
+            AbstractAsyncContextManager[BrowserContext]: 这是一个异步生成器，请参照文档使用。
+
+        Usage:
+            ```python
+            from graiax.playwright import PlaywrightService
+
+            pw_service = manager.get_component(PlaywrightService)
+            async with pw_service.context() as context:
+                page = context.new_page()
+                try:
+                    await page.set_content("Hello World!")
+                    img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
+                finally:
+                    page.stop()
+            ```
+        """
+        ...
+
+    @overload
     def context(
         self,
         *,
-        use_global_context: Literal[False],
+        use_global_context: Literal[False] = False,
         viewport: ViewportSize | None = None,
         screen: ViewportSize | None = None,
         no_viewport: bool | None = None,
@@ -272,34 +300,6 @@ class PlaywrightContextInterface(PlaywrightServiceStub):
             async with pw_service.context(
                 viewport={"width": 300, "height": 100},
             ) as context:
-                page = context.new_page()
-                try:
-                    await page.set_content("Hello World!")
-                    img = await page.screenshot(type="jpeg", quality=80, full_page=True, scale='device')
-                finally:
-                    page.stop()
-            ```
-        """
-        ...
-
-    @overload
-    def context(self, *, use_global_context: Literal[True]) -> AbstractAsyncContextManager[BrowserContext]:
-        """
-        获得一个新的浏览器上下文（playwright.async_api.BrowserContext）。
-
-        Args:
-            use_global_context (Literal[True]): 是否使用全局上下文，该选项默认为 True。
-                当你使用持久化上下文模式启动 Playwright 时，则只能使用全局上下文，也无法传入更多额外参数。
-
-        Returns:
-            AbstractAsyncContextManager[BrowserContext]: 这是一个异步生成器，请参照文档使用。
-
-        Usage:
-            ```python
-            from graiax.playwright import PlaywrightService
-
-            pw_service = manager.get_component(PlaywrightService)
-            async with pw_service.context() as context:
                 page = context.new_page()
                 try:
                     await page.set_content("Hello World!")
