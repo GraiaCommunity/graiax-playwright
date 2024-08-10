@@ -46,8 +46,7 @@ dev = [
 [tool.pdm.build]
 package-dir = "src"
 includes = ["src/graiax"]
-excludes = ["src/graiax/playwright/locale/**/*.po"]
-source_includes = ["src/graiax/playwright/locale/**/*.po"]
+source_includes = ["**/*.po"]
 
 [tool.pdm.scripts]
 extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 -k N_ src/graiax/playwright/"
