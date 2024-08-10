@@ -10,7 +10,7 @@ authors = [
 dependencies = [
     "launart>=0.8.2",
     "loguru>=0.7.2",
-    "playwright>=1.40.0",
+    "playwright>=1.40.0,<1.43.0",
 ]
 keywords = ["graia", "graiax", "launart", "playwright"]
 requires-python = ">=3.10"
@@ -37,8 +37,8 @@ build-backend = "pdm.backend"
 [tool.pdm]
 [tool.pdm.dev-dependencies]
 dev = [
-    "babel>=2.14.0",
-    "black>=23.12.0",
+    "babel>=2.16.0",
+    "black>=24.8.0",
     "creart>=0.3.0",
     "isort>=5.13.2",
 ]
@@ -59,7 +59,7 @@ compile = "pybabel compile -D graiax-playwright -d src/graiax/playwright/locale/
 
 [tool.black]
 line-length = 120
-target-version = ["py310", "py311", "py312"]
+target-version = ["py310"]
 
 [tool.isort]
 profile = "black"
@@ -67,6 +67,8 @@ profile = "black"
 [tool.ruff]
 line-length = 120
 target-version = "py310"
+
+[tool.ruff.lint]
 select = [
     # https://beta.ruff.rs/docs/rules
     "E",  # pycodestyle
@@ -76,8 +78,7 @@ select = [
     # "D",  # pydocstyle
     "ASYNC", # flake8-async
 ]
-exclude = [".git", ".venv", "__pypackages__", "dist"]
 ignore = ["F401"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
