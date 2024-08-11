@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.4.2"
+version = "0.4.3"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
