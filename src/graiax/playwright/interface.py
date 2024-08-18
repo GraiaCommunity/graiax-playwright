@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, AsyncGenerator, Literal, Pattern
+from re import Pattern
+from typing import TYPE_CHECKING, Any, Literal
 
 from playwright._impl._api_structures import (
     Geolocation,
