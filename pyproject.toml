@@ -1,6 +1,6 @@
 [project]
 name = "graiax-playwright"
-version = "0.3.1"
+version = "0.3.2"
 description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
@@ -10,8 +10,8 @@ authors = [
 dependencies = [
     "launart>=0.8.1",
     "loguru>=0.6.0",
-    "playwright>=1.36.0",
-    "typing-extensions>=4.7.1",
+    "playwright>=1.40.0,<1.43.0",
+    "typing-extensions>=4.7.0",
 ]
 keywords = ["graia", "graiax", "launart", "playwright"]
 requires-python = ">=3.9"
@@ -24,6 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
@@ -37,18 +38,15 @@ build-backend = "pdm.backend"
 [tool.pdm]
 [tool.pdm.dev-dependencies]
 dev = [
-    "babel>=2.12.1",
-    "black>=23.7.0",
+    "babel>=2.16.0",
+    "black>=24.8.0",
     "creart>=0.3.0",
-    "isort>=5.12.0",
-    "richuru>=0.1.1",
+    "isort>=5.13.2",
 ]
 
 [tool.pdm.build]
 package-dir = "src"
 includes = ["src/graiax"]
-excludes = ["src/graiax/playwright/locale/**/*.po"]
-source_includes = ["src/graiax/playwright/locale/**/*.po"]
 
 [tool.pdm.scripts]
 extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 -k N_ src/graiax/playwright/"
@@ -60,14 +58,16 @@ compile = "pybabel compile -D graiax-playwright -d src/graiax/playwright/locale/
 
 [tool.black]
 line-length = 120
-target-version = ["py38", "py39", "py310", "py311"]
+target-version = ["py39"]
 
 [tool.isort]
 profile = "black"
 
 [tool.ruff]
 line-length = 120
-target-version = "py38"
+target-version = "py39"
+
+[tool.ruff.lint]
 select = [
     # https://beta.ruff.rs/docs/rules
     "E",  # pycodestyle
@@ -80,5 +80,5 @@ select = [
 exclude = [".git", ".venv", "__pypackages__", "dist"]
 ignore = ["F401"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
