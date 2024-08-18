@@ -10,7 +10,7 @@ authors = [
 dependencies = [
     "launart>=0.8.1",
     "loguru>=0.6.0",
-    "playwright>=1.40.0,<1.43.0",
+    "playwright>=1.43.0",
     "typing-extensions>=4.7.0",
 ]
 keywords = ["graia", "graiax", "launart", "playwright"]

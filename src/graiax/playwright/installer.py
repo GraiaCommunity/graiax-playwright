@@ -22,7 +22,7 @@ async def install_playwright(
         env["PLAYWRIGHT_DOWNLOAD_HOST"] = download_host
 
     if install_with_deps:
-        command = [str(compute_driver_executable()), "install", "--with-deps", browser_type]
+        command = list(compute_driver_executable()) + ["install", "--with-deps", browser_type]
         if WINDOWS:
             log(
                 "info",
@@ -39,7 +39,7 @@ async def install_playwright(
                 ).format(browser_type=browser_type),
             )
     else:
-        command = [str(compute_driver_executable()), "install", browser_type]
+        command = list(compute_driver_executable()) + ["install", browser_type]
         log("info", N_("Start download Playwright for {browser_type}.").format(browser_type=browser_type))
 
     shell = await asyncio.create_subprocess_exec(*command, stdout=asyncio.subprocess.PIPE, env=env)
