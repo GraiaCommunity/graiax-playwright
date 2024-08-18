@@ -12,19 +12,24 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/graiax-playwright
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install PDM
-        uses: pdm-project/setup-pdm@main
+        uses: pdm-project/setup-pdm@v4
 
       - name: Build Package
         run: |
+          pdm install
           pdm build
 
       - name: Publish to PyPI
         if: ${{ github.event_name == 'push' }} || ${{ github.event.inputs.release == 'true' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.PYPI_TOKEN }}
           skip-existing: true
