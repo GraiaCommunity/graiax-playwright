@@ -2,7 +2,7 @@ from collections.abc import AsyncGenerator
 from contextlib import AbstractAsyncContextManager, asynccontextmanager
 from pathlib import Path
 from re import Pattern
-from typing import Any, Literal, Unpack, overload
+from typing import Any, Literal, overload
 from warnings import warn
 
 from launart import Service
@@ -16,7 +16,7 @@ from playwright._impl._api_structures import (
 from playwright.async_api import Browser, BrowserContext
 from playwright.async_api import Error as PWError
 from playwright.async_api import Page, Playwright, async_playwright
-from typing_extensions import ParamSpec
+from typing_extensions import ParamSpec, Unpack
 
 from .i18n import N_
 from .installer import install_playwright
