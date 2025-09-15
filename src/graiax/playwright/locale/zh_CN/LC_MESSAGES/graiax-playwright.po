@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: graiax-playwright 0.4.0\n"
 "Report-Msgid-Bugs-To: redlnn@graiax.cn\n"
-"POT-Creation-Date: 2023-12-17 16:58+0800\n"
+"POT-Creation-Date: 2025-09-15 23:28+0800\n"
 "PO-Revision-Date: 2023-03-19 01:06+0800\n"
 "Last-Translator: Red_lnn <redlnn@graiax.cn>\n"
 "Language: zh_Hans_CN\n"
@@ -17,25 +17,29 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.17.0\n"
 
-#: src/graiax/playwright/installer.py:30
+#: src/graiax/playwright/installer.py:31
+#, python-brace-format
 msgid ""
 "Start download Playwright for {browser_type} with dependencies, may "
 "require administrator privileges from you."
 msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}，可能会向你请求[magenta]管理员权限[/]"
 
-#: src/graiax/playwright/installer.py:38
+#: src/graiax/playwright/installer.py:39
+#, python-brace-format
 msgid ""
 "Start download Playwright for {browser_type} with dependencies, may "
 "require you to access sudo."
 msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}，可能会向你请求访问 [magenta]sudo[/]"
 
 #: src/graiax/playwright/installer.py:44
+#, python-brace-format
 msgid "Start download Playwright for {browser_type}."
 msgstr "开始下载/检查更新所选的 Playwright 浏览器：{browser_type}。"
 
 #: src/graiax/playwright/installer.py:63
+#, python-brace-format
 msgid "Downloaded [cyan]{file}[/] to [magenta]{path}[/]"
 msgstr "已下载 [cyan]{file}[/] 到 [magenta]{path}[/]"
 
@@ -44,6 +48,7 @@ msgid "Download Failed:\n"
 msgstr "下载失败：\n"
 
 #: src/graiax/playwright/installer.py:71
+#, python-brace-format
 msgid "Failed to download Playwright for {browser_type}."
 msgstr "无法下载所选的 Playwright 浏览器：{browser_type}。"
 
@@ -51,7 +56,7 @@ msgstr "无法下载所选的 Playwright 浏览器：{browser_type}。"
 msgid "Please see: [magenta]https://playwright.dev/python/docs/intro[/]"
 msgstr "点击右侧链接查看更多: [magenta]https://playwright.dev/python/docs/intro[/]"
 
-#: src/graiax/playwright/installer.py:75
+#: src/graiax/playwright/installer.py:76
 msgid ""
 "Run [magenta]poetry run playwright install[/] or [magenta]pdm run "
 "playwright install[/] to install Playwright manually."
@@ -60,31 +65,44 @@ msgstr ""
 "playwright install[/] 来手动安装 Playwright。"
 
 #: src/graiax/playwright/installer.py:81
+#, python-brace-format
 msgid "Playwright for {browser_type} is installed."
 msgstr "基于 {browser_type} 的 Playwright 已安装。"
 
-#: src/graiax/playwright/service.py:174 src/graiax/playwright/service.py:198
-#: src/graiax/playwright/service.py:347 src/graiax/playwright/service.py:359
+#: src/graiax/playwright/service.py:191 src/graiax/playwright/service.py:215
+#: src/graiax/playwright/service.py:364 src/graiax/playwright/service.py:376
 msgid ""
 "Playwright has not been started yet, you cannot use the this method at "
 "this time"
 msgstr "Playwright 此时还未启动，你现在不可以使用此方法。"
 
-#: src/graiax/playwright/service.py:177 src/graiax/playwright/service.py:350
+#: src/graiax/playwright/service.py:194 src/graiax/playwright/service.py:367
 msgid ""
 "Playwright service is launched by using a persistent context. So you must"
 " use global context."
 msgstr "Playwright 服务是通过使用持久上下文（Persistent Context）的方式来启动的。所以你必须使用全局上下文。"
 
-#: src/graiax/playwright/service.py:181 src/graiax/playwright/service.py:354
+#: src/graiax/playwright/service.py:198 src/graiax/playwright/service.py:371
 msgid "`Prsistent Context` cannot accept additional parameters. Ignore it."
 msgstr "持久性上下文（Prsistent Context）不支持额外参数，已忽略。"
 
-#: src/graiax/playwright/service.py:572
+#: src/graiax/playwright/service.py:724
+#, fuzzy
+msgid "Playwright is currently starting in connect mode."
+msgstr "Playwright 当前正在远程连接模式启动。"
+
+#: src/graiax/playwright/service.py:728
+#, fuzzy
+msgid "Playwright is currently starting in connect_cdp mode."
+msgstr "Playwright 当前正以远程 CDP (Chrome DevTools Protocol) 模式启动。"
+
+#: src/graiax/playwright/service.py:735
 msgid "Playwright is currently starting in persistent context mode."
 msgstr "Playwright 当前正以持久上下文模式启动。"
 
-#: src/graiax/playwright/service.py:580
+#: src/graiax/playwright/service.py:768 src/graiax/playwright/service.py:791
+#: src/graiax/playwright/service.py:827
+#, python-brace-format
 msgid ""
 "Unable to launch Playwright for {browser_type}, please check the log "
 "output for the reason of failure. It is possible that some system "
@@ -94,7 +112,12 @@ msgstr ""
 "无法启动基于 {browser_type} 的 Playwright，请检查日志输出以获取失败原因。有可能是缺少一些系统依赖，你可以将 "
 "[magenta]`install_with_deps`[/] 设置为 [magenta]`True`[/] 以在下载浏览器时一同安装依赖"
 
-#: src/graiax/playwright/service.py:590
+#: src/graiax/playwright/service.py:777 src/graiax/playwright/service.py:802
+#, python-brace-format
 msgid "Playwright for {browser_type} is started."
 msgstr "基于 {browser_type} 的 Playwright 已启动。"
 
+#: src/graiax/playwright/service.py:836
+#, fuzzy, python-brace-format
+msgid "Playwright for {browser_type} is restarted."
+msgstr "基于 {browser_type} 的 Playwright 已重新启动。"
