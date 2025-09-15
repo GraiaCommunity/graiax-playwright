@@ -1,6 +1,7 @@
 from pathlib import Path
 from re import Pattern
 from typing import Literal
+from collections.abc import Sequence
 
 from loguru import logger
 from playwright._impl._api_structures import (
@@ -9,6 +10,7 @@ from playwright._impl._api_structures import (
     ProxySettings,
     StorageState,
     ViewportSize,
+    ClientCertificate,
 )
 from typing_extensions import TypedDict
 
@@ -44,7 +46,7 @@ class Progress:
             self.last_updated = time.time()
 
 
-brower_config_list = [
+BROWSER_CONFIG_LIST = [
     "executable_path",
     "channel",
     "args",
@@ -64,7 +66,7 @@ brower_config_list = [
     "firefox_user_prefs",
 ]
 
-browser_context_config_list = [
+BROWSER_CONTEXT_CONFIG_LIST = [
     "viewport",
     "screen",
     "no_viewport",
@@ -85,9 +87,9 @@ browser_context_config_list = [
     "color_scheme",
     "reduced_motion",
     "forced_colors",
+    "contrast",
     "accept_downloads",
     "default_browser_type",
-    "proxy",
     "record_har_path",
     "record_har_omit_content",
     "record_video_dir",
@@ -99,6 +101,7 @@ browser_context_config_list = [
     "record_har_url_filter",
     "record_har_mode",
     "record_har_content",
+    "client_certificates",
 ]
 
 
@@ -113,16 +116,17 @@ class Parameters(TypedDict, total=False):
     locale: str | None
     timezone_id: str | None
     geolocation: Geolocation | None
-    permissions: list[str] | None
+    permissions: Sequence[str] | None
     extra_http_headers: dict[str, str] | None
     offline: bool | None
     http_credentials: HttpCredentials | None
     device_scale_factor: float | None
     is_mobile: bool | None
     has_touch: bool | None
-    color_scheme: Literal["dark", "light", "no-preference"] | None
-    forced_colors: Literal["active", "none"] | None
-    reduced_motion: Literal["no-preference", "reduce"] | None
+    color_scheme: Literal["dark", "light", "no-preference", "null"] | None
+    forced_colors: Literal["active", "none", "null"] | None
+    contrast: Literal["more", "no-preference", "null"] | None
+    reduced_motion: Literal["no-preference", "null", "reduce"] | None
     accept_downloads: bool | None
     default_browser_type: str | None
     proxy: ProxySettings | None
@@ -137,3 +141,4 @@ class Parameters(TypedDict, total=False):
     record_har_url_filter: str | Pattern[str] | None
     record_har_mode: Literal["full", "minimal"] | None
     record_har_content: Literal["attach", "embed", "omit"] | None
+    client_certificates: list[ClientCertificate] | None
