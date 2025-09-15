@@ -5,7 +5,8 @@ description = "适用于 Graia 的 Playwright 管理器"
 authors = [
     { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
     { name = "I Love Study", email = "1450069615@qq.com" },
-    { name = "Redlnn", email = "w731347477@gmail.com" },
+    { name = "Redlnn", email = "red_lnn@outlook.com" },
+    { name = "RF-Tar-Railt", email = "rf_tar_railt@qq.com" },
 ]
 dependencies = [
     "launart>=0.8.2",
